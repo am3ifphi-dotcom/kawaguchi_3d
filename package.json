@@ -1,0 +1,14 @@
+{
+  "name": "kawaguchi_3d",
+  "version": "1.0.0",
+  "description": "川口市立高等学校 3D exploration simulation (Three.js / WebGL)",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node tests/sim.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.12.0",
+    "three": "^0.186.1"
+  }
+}

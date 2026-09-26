@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>川口市立高等学校 3D 探検シミュレーター</title>
+<style>
+  :root {
+    --accent: #1a5c9e;
+    --panel: rgba(12, 18, 28, 0.82);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0e14; }
+  body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif; }
+  #app { position: fixed; inset: 0; }
+  canvas { display: block; }
+
+  /* ---------- タイトル画面 ---------- */
+  #splash {
+    position: fixed; inset: 0; z-index: 60;
+    background: linear-gradient(160deg, #0d1420 0%, #12233a 55%, #17324f 100%);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity .8s ease; color: #fff;
+  }
+  #splash.hidden { opacity: 0; pointer-events: none; }
+  .splash-inner { text-align: center; max-width: 720px; padding: 24px; }
+  .splash-school { font-size: 13px; letter-spacing: .5em; color: #8fb8dd; margin-bottom: 18px; text-indent: .5em; }
+  .splash-title { font-size: clamp(26px, 5vw, 44px); font-weight: 800; letter-spacing: .12em; line-height: 1.35; text-shadow: 0 2px 24px rgba(64,140,220,.45); }
+  .splash-sub { margin-top: 14px; font-size: clamp(12px, 1.7vw, 15px); color: #b9cee4; line-height: 1.9; }
+  .splash-start {
+    margin-top: 34px; display: inline-block; padding: 15px 58px;
+    font-size: 17px; font-weight: 700; letter-spacing: .3em; text-indent:.3em; color: #fff;
+    background: linear-gradient(135deg, #1e6fc0, #14497e);
+    border: 1px solid rgba(140,190,240,.55); border-radius: 999px; cursor: pointer;
+    box-shadow: 0 6px 30px rgba(30,111,192,.45);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .splash-start:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(30,111,192,.6); }
+  .splash-note { margin-top: 22px; font-size: 11.5px; color: #7d93ab; line-height: 2; }
+  .splash-load { margin-top: 18px; font-size: 12px; color: #6fa7d8; min-height: 18px; letter-spacing: .2em; }
+  .splash-credit { position: absolute; bottom: 14px; width: 100%; text-align: center; font-size: 10px; color: #54687e; letter-spacing: .1em; }
+
+  /* ---------- HUD ---------- */
+  #hud { position: fixed; inset: 0; z-index: 30; pointer-events: none; opacity: 0; transition: opacity .6s; }
+  #hud.on { opacity: 1; }
+
+  #crosshair {
+    position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px;
+    border-radius: 50%; background: rgba(255,255,255,.85);
+    box-shadow: 0 0 4px rgba(0,0,0,.8); transition: transform .12s;
+  }
+  #crosshair.hot { transform: scale(1.7); background: #ffd76a; }
+
+  #zone-banner {
+    position: absolute; top: 46px; left: 50%; transform: translateX(-50%) translateY(-8px);
+    background: var(--panel); color: #fff; padding: 10px 26px; border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    font-size: 15px; font-weight: 700; letter-spacing: .18em; text-indent: .18em;
+    opacity: 0; transition: opacity .45s, transform .45s; white-space: nowrap;
+    backdrop-filter: blur(6px);
+  }
+  #zone-banner.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  #zone-banner small { display: block; font-size: 10px; font-weight: 400; color: #9db8d2; letter-spacing: .28em; margin-top: 3px; }
+
+  #info-card {
+    position: absolute; left: 50%; bottom: 120px; transform: translateX(-50%) translateY(10px);
+    max-width: min(560px, 86vw); background: var(--panel); color: #eaf2fa;
+    border-radius: 10px; padding: 13px 20px; border-top: 3px solid #d8a93e;
+    opacity: 0; transition: opacity .3s, transform .3s; backdrop-filter: blur(8px);
+  }
+  #info-card.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  #info-card h3 { font-size: 14px; color: #ffd76a; letter-spacing: .12em; margin-bottom: 5px; }
+  #info-card p { font-size: 12px; line-height: 1.75; color: #c9d8e8; }
+  #info-card .key { display: inline-block; border: 1px solid #8fa8c0; border-radius: 4px; padding: 0 5px; font-size: 10px; margin-right: 6px; color: #aec4da; }
+
+  #controls-panel {
+    position: absolute; left: 14px; bottom: 14px;
+    background: var(--panel); border-radius: 10px; padding: 10px 14px;
+    color: #cfe0f0; font-size: 11px; line-height: 2.05; backdrop-filter: blur(6px);
+    border: 1px solid rgba(120,160,200,.18);
+  }
+  #controls-panel b { color: #fff; }
+  .keycap {
+    display: inline-block; min-width: 20px; text-align: center;
+    background: #233246; border: 1px solid #3d5470; border-bottom-width: 2.5px;
+    border-radius: 4px; padding: 0 5px; margin: 0 2px; font-size: 10px; font-weight: 700; color: #e8f1fa;
+  }
+
+  #location-box {
+    position: absolute; right: 14px; bottom: 14px; text-align: right;
+    color: #dfeaf5; font-size: 11px; letter-spacing: .12em;
+  }
+  #location-box .place { font-size: 15px; font-weight: 700; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+  #location-box .meta { margin-top: 3px; color: #9db8d2; }
+  #location-box .clock { font-size: 20px; font-weight: 800; letter-spacing: .06em; color:#fff; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+
+  #minimap-wrap {
+    position: absolute; right: 14px; top: 14px;
+    background: var(--panel); border-radius: 10px; padding: 8px;
+    border: 1px solid rgba(120,160,200,.18); backdrop-filter: blur(6px);
+  }
+  #minimap { display: block; border-radius: 6px; }
+  #minimap-label { text-align: center; font-size: 9.5px; color: #9db8d2; letter-spacing: .3em; text-indent: .3em; margin-top: 5px; }
+
+  #top-left {
+    position: absolute; left: 14px; top: 14px;
+    background: var(--panel); border-radius: 10px; padding: 9px 16px;
+    color: #fff; backdrop-filter: blur(6px); border: 1px solid rgba(120,160,200,.18);
+  }
+  #top-left .t { font-size: 13px; font-weight: 800; letter-spacing: .14em; }
+  #top-left .s { font-size: 9.5px; color: #8fa8c0; letter-spacing: .1em; margin-top: 2px; }
+  #fps { position: absolute; left: 16px; top: 74px; color: #7fa8cf; font-size: 10px; letter-spacing: .1em; text-shadow: 0 1px 3px #000; }
+
+  /* ---------- メニュー (テレポート) ---------- */
+  #menu {
+    position: fixed; inset: 0; z-index: 50; display: none;
+    background: rgba(6, 10, 16, .78); backdrop-filter: blur(10px);
+    align-items: center; justify-content: center;
+  }
+  #menu.open { display: flex; }
+  .menu-inner {
+    width: min(860px, 92vw); max-height: 86vh; overflow: auto;
+    background: linear-gradient(165deg, #101a28, #0d141e);
+    border: 1px solid rgba(120,165,215,.25); border-radius: 16px; padding: 26px 30px 30px;
+    color: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  }
+  .menu-inner h2 { font-size: 17px; letter-spacing: .3em; text-indent:.3em; color: #cfe4f8; text-align: center; }
+  .menu-inner .hint { text-align: center; font-size: 11px; color: #7d93ab; margin: 6px 0 18px; }
+  .tp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+  .tp-btn {
+    pointer-events: auto; cursor: pointer; text-align: left;
+    background: #16233a; color: #e8f1fa; border: 1px solid #2b4160;
+    border-radius: 9px; padding: 11px 13px; transition: all .15s;
+  }
+  .tp-btn:hover { background: #1f3355; border-color: #3f6ea5; transform: translateY(-1px); }
+  .tp-btn .nm { font-size: 13px; font-weight: 700; letter-spacing: .05em; }
+  .tp-btn .ds { font-size: 10px; color: #8fa8c0; margin-top: 3px; line-height: 1.5; }
+  .tp-btn .ic { font-size: 17px; margin-right: 7px; }
+  .menu-cat { font-size: 11px; color: #6fa7d8; letter-spacing: .3em; margin: 16px 0 8px; border-bottom: 1px solid #233246; padding-bottom: 5px; }
+
+  /* ---------- モバイル ---------- */
+  #touch-ui { position: fixed; inset: 0; z-index: 40; display: none; pointer-events: none; }
+  #touch-ui.on { display: block; }
+  #stick { position: absolute; left: 26px; bottom: 90px; width: 110px; height: 110px; border-radius: 50%;
+    background: rgba(20,30,44,.5); border: 1.5px solid rgba(140,180,220,.4); pointer-events: auto; touch-action: none; }
+  #stick-knob { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+    border-radius: 50%; background: rgba(120,170,220,.55); }
+  #btn-run { position: absolute; right: 30px; bottom: 190px; width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(20,30,44,.55); border: 1.5px solid rgba(140,180,220,.4); color:#dfeaf5; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; pointer-events: auto; touch-action: none; user-select: none;}
+  #btn-jump { position: absolute; right: 110px; bottom: 100px; width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(20,30,44,.55); border: 1.5px solid rgba(140,180,220,.4); color:#dfeaf5; font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; pointer-events: auto; touch-action: none; user-select: none;}
+
+  @media (max-width: 640px) {
+    #controls-panel { display: none; }
+    #minimap-wrap { transform: scale(.72); transform-origin: top right; }
+  }
+</style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="crosshair"></div>
+    <div id="zone-banner"></div>
+    <div id="info-card"></div>
+    <div id="top-left">
+      <div class="t">川口市立高等学校</div>
+      <div class="s">KAWAGUCHI CITY HIGH SCHOOL — 3D VIEWER</div>
+    </div>
+    <div id="fps"></div>
+    <div id="minimap-wrap">
+      <canvas id="minimap" width="200" height="230"></canvas>
+      <div id="minimap-label">CAMPUS MAP</div>
+    </div>
+    <div id="controls-panel">
+      <b>移動</b> <span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span>
+      <b>走る</b> <span class="keycap">Shift</span>
+      <b>ジャンプ</b> <span class="keycap">Space</span><br>
+      <b>視点</b> マウス　<b>場所移動</b> <span class="keycap">M</span>
+      　<b>時刻</b> <span class="keycap">T</span>
+      　<b>飛行</b> <span class="keycap">F</span><br>
+      <b>調べる</b> 視点を合わせる　<b>写真モード</b> <span class="keycap">P</span>
+      　<b>メニュー</b> <span class="keycap">Esc</span>
+    </div>
+    <div id="location-box">
+      <div class="clock" id="clock">12:00</div>
+      <div class="place" id="place">—</div>
+      <div class="meta" id="floor-label"></div>
+    </div>
+  </div>
+
+  <!-- テレポートメニュー -->
+  <div id="menu">
+    <div class="menu-inner">
+      <h2>場所を移動</h2>
+      <div class="hint">項目をクリックするとその場所へ移動します（<span class="keycap">Esc</span> で閉じる）</div>
+      <div id="tp-grid" class="tp-grid"></div>
+    </div>
+  </div>
+
+  <!-- タッチUI -->
+  <div id="touch-ui">
+    <div id="stick"><div id="stick-knob"></div></div>
+    <div id="btn-run">走る</div>
+    <div id="btn-jump">ジャンプ</div>
+  </div>
+
+  <!-- タイトル -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-school">埼玉県川口市上青木三丁目</div>
+      <div class="splash-title">川口市立高等学校<br>3D 探検シミュレーター</div>
+      <div class="splash-sub">
+        膜屋根の光が降り注ぐ「ラーニングストリート」を中心に、<br>
+        校舎棟・アリーナ棟・グラウンド・プールなど第1校地を再現。<br>
+        校舎の中も外も、自由に歩き回れます。
+      </div>
+      <div class="splash-start" id="start-btn" style="opacity:.45; pointer-events:none;">読み込み中…</div>
+      <div class="splash-load" id="load-status">準備中…</div>
+      <div class="splash-note">
+        PC推奨（マウス+キーボード）。クリックでマウスが固定されます。<br>
+        ※本作品はファンメイドの3Dモデルであり、実在の建物とは細部が異なります。
+      </div>
+    </div>
+    <div class="splash-credit">WebGL / Three.js — Built as an interactive architectural walk-through</div>
+  </div>
+
+  <script>
+    // モジュール読み込み失敗なども画面に表示する
+    window.addEventListener('error', (e) => {
+      const el = document.getElementById('load-status');
+      if (el && e.message) el.textContent = 'エラー: ' + e.message;
+    });
+    window.addEventListener('unhandledrejection', (e) => {
+      const el = document.getElementById('load-status');
+      if (el) el.textContent = 'エラー: ' + (e.reason && e.reason.message ? e.reason.message : e.reason);
+    });
+  </script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./assets/three/three.module.js",
+      "three/addons/controls/PointerLockControls.js": "./assets/three/controls/PointerLockControls.js",
+      "three/addons/utils/BufferGeometryUtils.js": "./assets/three/utils/BufferGeometryUtils.js"
+    }
+  }
+  </script>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
