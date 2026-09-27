@@ -166,7 +166,10 @@ def main():
     cam_obj.rotation_euler = (radians(60), 0, radians(38))
 
     # ---- 8. レンダリング暫定設定 ----
-    scene.render.engine = 'BLENDER_EEVEE_NEXT'   # Blender 4.x: まずEeveeで軽く
+    # Blender 4.2+ は Eevee Next("BLENDER_EEVEE_NEXT")、4.1以前は旧名("BLENDER_EEVEE")。
+    # 実行環境が持つ識別子を動的に選ぶ → どちらの 4.x でも落ちない
+    _engines = {it.identifier for it in bpy.types.RenderSettings.bl_rna.properties['engine'].enum_items}
+    scene.render.engine = ('BLENDER_EEVEE_NEXT' if 'BLENDER_EEVEE_NEXT' in _engines else 'BLENDER_EEVEE')
     scene.render.resolution_x = 1920
     scene.render.resolution_y = 1080
 
