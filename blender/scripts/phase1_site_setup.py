@@ -191,32 +191,18 @@ def main():
 
     print("""
 ----------------------------------------------------------------------
-[次の手順 — ユーザー操作パート] Phase 1 完成には以下が必要です:
+[Phase 1 完了] 生成物はOKです（ポリゴン×3・50mグリッド・第2校地参照点）。
+  このログ/画面をエージェントに送れば「Phase 1 実行面」は通過扱いになります。
 
-(1) 空中写真 (BlenderGIS, ネット接続あるBlenderで):
-    メニュー GIS > Web geodata > Basemap → ソース「Google」ではなく
-    国土地理院タイル(写真)推奨※BlenderGIS既定OSM可/最新の航空写真は
-    地理院タイル seamlesphoto。ズーム 17-18, 範囲はこの敷地周辺。
-
-(2) 地形DEM (国土地理院 基盤地図情報, 要無料登録):
-    https://fgd.gsi.go.jp/download/ → 数値標高モデル 5mメッシュ
-    3次メッシュ 533975 (第1・第2校地ともこの中) をDL → data/fgd/ へ。
-    例: FG-GML-5339-75-DEM5-B-0001.zip
-
-(3) PLATEAU (G空間情報センター, 規約同意の上DL):
-    dataset: plateau-11203-kawaguchi-shi-2024
-    必要リソース: 建築物モデル CityGML (bldg) + 地形 (dem) + 土地利用 (luse) + 道路 (tran)
-    ※索引図PDFで 533975 が LOD2 整備範囲か最終確認のこと。→ data/plateau/ へ。
-
-(4) 設計図面バイナリ (Wayback, ブラウザでDLのみ):
-    実施設計別添(各階平面図!):
-      https://web.archive.org/web/20161017163448id_/http://www.city.kawaguchi.lg.jp/kbn/Files/1/72011034/attach/27901siryou.pdf
-    補助資料P02:
-      https://web.archive.org/web/20170825145501id_/http://www.city.kawaguchi.lg.jp/kbn/Files/1/72011034/attach/P02.pdf
-    → refs/city_pdf/ へ。
-
-(5) 上記4ステップ後、私に「Phase 1 データ配置完了」と連絡 →
-    PLATEAU読込・校舎ブロックアウト(Phase 2)のスクリプトを出力します。
+[現行の運用メモ（2026-09-27 刷新。以下は以前の案内(旧FGD方式)から更新済み）]
+  - 空中写真: BlenderGISは任意。地理院 seamlessphoto z16 をブラウザ手動DL(ガイド❸.5)
+    → data/raw/photo_tiles/ へ
+  - 地形: FGDは撤廃。地理院タイル標高PNG dem5b z15（登録不要・ガイド❸）→ data/dem_tiles/ へ
+  - PLATEAU: ZIP(約411MB)をDLし、メッシュ 53395597系(bldg/tran) の .gml だけ部分抽出
+    → data/plateau/ へ。展開は全体ではなく「検索→対象ファイルだけ」でOK
+    ※メッシュは訂正済み（旧533975は算出ミス）。索引図でLOD2=市指定5施設のみであることは確認済
+  - 実施設計PDF: **エージェントが取得＆直接解析済**（main経由→ refs/）。新たなDLは不要です
+  - 次: エージェント側で「配置図アフィン校正 + PLATEAU解析」→ Phase 2(校舎ブロックアウト)へ
 ----------------------------------------------------------------------
 ===== phase1_site_setup 完了: オリジン照合のため画面を調整してください（Numpad 7 で上面図）=====
 """)

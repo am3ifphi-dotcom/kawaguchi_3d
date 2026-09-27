@@ -74,4 +74,5 @@
 
 
 # ▣ 実行確認ログ
+- 2026-09-27 Phase 1 スクリプト実行成功（ユーザー・本番ログ受領）: 3ポリゴン生成+50mグリッド+第2校地参照点。両ゲート通過。**phase1スクリプト末尾の旧案内は同ターンに最新版へ刷新済**
 - 2026-09-27 Phase 0 スクリプト実行成功（ユーザー・本番ログ受領）: 22コレクション/原点/自動保存=`C:\Users\cheer\kawaguchi_3d.blend`。addon(blgis/sun_pos/measureit)未導入は想定内（現方針では必須でない）。DeprecationWarning(use_nodes)=無害
