@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-phase2_blockout.py (v2)
+phase2_blockout.py (v3)
 川口市立高等学校 3Dプロジェクト — Phase 2 校舎ブロックアウト（第1校地・PLATEAU外形版）
 =====================================================================
 何が起きるか（1行）:
@@ -21,7 +21,7 @@ PLATEAU_JSON_CANDIDATES = [
     os.path.join(os.path.expanduser("~"), "Downloads", "plateau_53395597.json"),
 ]
 MASSES = {
- "version": "2026-09-27 v2 (PLATEAU h903港LOD1外形入り)",
+ "version": "2026-09-28 v3 (プール棟=写真実測リング置換・屋外プール新規。主要外形が全て実測ベース)",
  "basis": "外形=PLATEAU 11203 LOD1 bldg(53395597)+配置図。高さ=実施設計断面/平面図優先・無ければPLATEAU h",
  "heights_locked": {
   "school軒18.486/高21.886": "BLD-011",
@@ -475,15 +475,57 @@ MASSES = {
   },
   {
    "name": "bldg_pool",
-   "label": "屋内プール棟(PLATEAU未収録)",
-   "type": "box",
-   "E0": -80.0,
-   "E1": -19.0,
-   "N0": 100.0,
-   "N1": 130.0,
+   "label": "屋内プール棟(65.9x39.8m 写真実測)",
+   "type": "ring",
+   "ring": [
+    [
+     -80.3,
+     97.5
+    ],
+    [
+     -13.9,
+     97.5
+    ],
+    [
+     -13.9,
+     137.3
+    ],
+    [
+     -80.3,
+     137.3
+    ]
+   ],
    "h": 8.0,
-   "h_src": "【推定8m】断面未到着/LOD1不在",
-   "accuracy": "画像校正±5m【仮置き】LOD1未収録のため外形は配置図由来。すりガラス帯域の正当性はGeoTIFF/写真で裏取り予定"
+   "h_src": "【推定8.0m】断面/立面未到着(一階大空間+機械帯)。写真の影・規模と整合",
+   "accuracy": "外形=地理院seamlessphoto z18実測±1m(PLATEAU非収録を代替)・高さは【推定】",
+   "plt_ref": "z18 232811,232812/103095 (jpg)→圃変換済"
+  },
+  {
+   "name": "bldg_pool_out",
+   "label": "屋外25mプール(水盤)",
+   "type": "water",
+   "ring": [
+    [
+     -18.3,
+     94.3
+    ],
+    [
+     6.3,
+     94.3
+    ],
+    [
+     6.3,
+     111.8
+    ],
+    [
+     -18.3,
+     111.8
+    ]
+   ],
+   "h": 0.3,
+   "h_src": "地上面の水盤(水面+0.3)",
+   "accuracy": "写真実測±1m【新規】PLATEAU非収録",
+   "note": "デッキ/取水設備は Phase 3 で要現況照合"
   }
  ]
 }
@@ -551,11 +593,12 @@ def main():
     m_exact = make_mat("M_vol_確定", (0.62, 0.63, 0.65))
     m_pltH  = make_mat("M_vol_PLATEAU高", (0.55, 0.72, 0.92))
     m_tent  = make_mat("M_vol_仮置き", (0.95, 0.8, 0.25), alpha=0.55)
+    m_water = make_mat("M_vol_水盤", (0.2, 0.5, 0.9), alpha=0.6)
     print("\n===== phase2_blockout v2 開始 =====")
     nn = 0
     for v in MASSES["volumes"]:
         hs = v.get("h_src", ""); acc = v.get("accuracy", "")
-        mat = m_exact if "図面確定" in hs else (m_tent if "仮置き" in acc or "【推定" in hs else m_pltH)
+        mat = m_water if v.get("type")=="water" else (m_exact if "図面確定" in hs else (m_tent if "仮置き" in acc else m_pltH))
         props = {"label": v.get("label", v["name"]), "h_src": hs, "accuracy": acc,
                  "plt_id": v.get("plt_id", "-")}
         if v.get("type") == "ring":
@@ -569,7 +612,7 @@ def main():
         else:
             w, dd = abs(v["E1"] - v["E0"]), abs(v["N1"] - v["N0"])
         print(f"  [配置] {v['name']:16s} {v.get('label','')[:28]:28s} {w:5.1f}x{dd:5.1f}m h={v['h']:6.3f}  {hs[:22]}")
-    print(f"  主要棟 {nn} 件（外形=PLATEAU実測・高さ=図面優先）")
+    print(f"  主要棟 {nn} 件（外形=PLATEAU実測+航空写真z18。プール棟=写真66.4x39.8置換）")
 
     col_p = ensure_collection(COL_REF)
     loaded = next((p for p in PLATEAU_JSON_CANDIDATES if os.path.exists(p)), None)
@@ -597,8 +640,8 @@ def main():
             print("  保存しました: " + SAVE_PATH)
         except Exception as exc:
             print("  [警告] 保存失敗: {}".format(exc))
-    print("\n見方: Numpad 7 で上面。灰=確定、淡青=PLATEAU高さ、黄半透明=仮置き(プール)。緑ワイヤー=周辺建物。")
-    print("===== v2 完了 =====\n")
+    print("\n見方: Numpad 7 で上面。灰=図面確定高さ、淡青=PLATEAU/写真実測外形(高さPLATEAU/推定)、青透明=屋外プール水盤。緑ワイヤー=周辺建物。黄半透明は今回無し。")
+    print("===== v3 完了 =====\n")
 
 if __name__ == "__main__":
     main()
