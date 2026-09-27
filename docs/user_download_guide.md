@@ -73,8 +73,23 @@
 ## ❸ GL標高（FGDの代わりに地理院タイルで。登録不要・開けるはず）
 
 ~~基盤地図情報（fgd.gsi.go.jp）~~ は**不要になりました**。代わりに **国土地理院タイル（cyberjapandata）** をブラウザで直接保存します（登録なし）。
-下記URLをブラウザで開き、PNGが標高のグレースケール画像で出たら「名前を付けて保存」→ `data/dem_tiles/` へ。
-各タイルにつき **dem5b → dem5a → dem_png の順で試して**、表示できたもの1枚だけ保存でOK。
+下記URLをブラウザで開き、PNGが**ほぼ白のグレースケール画像**（標高の数値PNG・白っぽい=低地で正常）で出たら「名前を付けて保存」→ `data/dem_tiles/` へ。
+
+> **⚠️ 2026-09-27 実測訂正**: この地域は **dem5b は存在しません**（5B未整備のためNoSuchKey）。**本命は dem5a(z15)**。ブラウザで「画像が出る=200」なものだけ保存でOK（無い層はXMLのエラー表示が出ます）。
+>
+> **第1校地（2枚・どちらも必要）** — 優先: dem5a z15
+> - `https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/15/29101/12886.png`
+> - `https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/15/29101/12887.png`
+> - （fallback もし上が無ければ）`https://cyberjapandata.gsi.go.jp/xyz/dem_png/14/14550/6443.png` ※1枚で2枚分の範囲・精度10m
+>
+> **第2校地（4枚）** — 優先: dem5a z15
+> - `https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/15/29103/12888.png`
+> - `https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/15/29103/12889.png`
+> - `https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/15/29104/12888.png`
+> - `https://cyberjapandata.gsi.go.jp/xyz/dem5a_png/15/29104/12889.png`
+> - （fallback）`https://cyberjapandata.gsi.go.jp/xyz/dem_png/14/14551/6444.png` と `https://cyberjapandata.gsi.go.jp/xyz/dem_png/14/14552/6444.png`
+>
+> 標高デコード式（Phase 2 terrain用）: `h = xR*2^16 + xG*2^8 + xB`, `x < 2^23 → h*0.01[m]`（負値は x-2^24）。地理院ゼル解釈。
 
 **第1校地（2タイル）**
 - `https://cyberjapandata.gsi.go.jp/xyz/dem5b_png/15/29101/12886.png`（駄目なら dem5a_png、最後に dem_png に置き換え）
