@@ -71,3 +71,7 @@
 - 出典表示ページ `/credits` を必須化（PLATEAU/OSM/地理院/川口市資料、写真は「非掲載」明記、個人情報なし）。
 - 詳細: `docs/web_delivery_plan.md`
 # 法・倫理メモは変更なし（sources_index.md 参照）
+
+
+# ▣ 実行確認ログ
+- 2026-09-27 Phase 0 スクリプト実行成功（ユーザー・本番ログ受領）: 22コレクション/原点/自動保存=`C:\Users\cheer\kawaguchi_3d.blend`。addon(blgis/sun_pos/measureit)未導入は想定内（現方針では必須でない）。DeprecationWarning(use_nodes)=無害
