@@ -1,0 +1,7 @@
+.scratch/
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+# Temporary image-search thumbnails: inspection only, no redistribution permission.
+/image-search/

@@ -1,0 +1,288 @@
+{
+  "reviewDate": "2026-09-28",
+  "site": "https://kawaguchicity-hs.ed.jp/about/facility",
+  "method": "All 31 thumbnail image IDs extracted from four photo_modal pages. Each guessed /files/download/{id}big URL separately requested via remote text reader: 21 generic machine descriptions, 10 forbidden (403). Direct bitmap inspection of all individual album images still impossible in this environment. A few distinct official/municipal photographs viewed as search cache; see docs/phase1-site.md.",
+  "status": "URL inventory complete for four linked facility albums; individual image visual audit incomplete",
+  "albums": [
+    {
+      "name": "校舎棟の写真",
+      "url": "https://kawaguchicity-hs.ed.jp/p/photo_albums/photo_list/224/52?frame_id=439",
+      "photos": [
+        {
+          "id": 453,
+          "caption": "都市の門",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/453thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/453big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 454,
+          "caption": "ラーニングストリート",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/454thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/454big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 455,
+          "caption": "東側階段",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/455thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/455big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 458,
+          "caption": "ラーニングストリート",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/458thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/458big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 459,
+          "caption": "鋳物（市産品）の校章",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/459thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/459big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 460,
+          "caption": "３階教室",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/460thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/460big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 463,
+          "caption": "生徒用ロッカー",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/463thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/463big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 464,
+          "caption": "コモンロビー",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/464thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/464big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 465,
+          "caption": "４階プレゼンテーションルーム",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/465thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/465big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 466,
+          "caption": "２階ラーニングコモンズ（図書館）",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/466thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/466big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 467,
+          "caption": "２階自習室１",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/467thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/467big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 468,
+          "caption": "２階自習室１を３階から",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/468thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/468big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 469,
+          "caption": "１階大ホール",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/469thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/469big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 470,
+          "caption": "２階食堂",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/470thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/470big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 479,
+          "caption": "鋳物のサイン",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/479thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/479big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        }
+      ]
+    },
+    {
+      "name": "アリーナ棟の写真",
+      "url": "https://kawaguchicity-hs.ed.jp/p/photo_albums/photo_list/224/51?frame_id=439",
+      "photos": [
+        {
+          "id": 1209,
+          "caption": "アリーナS棟大アリーナ",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1209thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1209big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1210,
+          "caption": "大アリーナ観客席",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1210thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1210big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1211,
+          "caption": "大アリーナ側面",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1211thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1211big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1212,
+          "caption": "アリーナS棟ロビー",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1212thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1212big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1213,
+          "caption": "アリーナS棟南面（部室側）",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1213thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1213big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1214,
+          "caption": "フィジカルストリート",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1214thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1214big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1215,
+          "caption": "アリーナS棟：伝統の門側から",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1215thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1215big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1216,
+          "caption": "アリーナN棟 剣道場",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1216thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1216big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1217,
+          "caption": "アリーナN棟 小アリーナ",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1217thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1217big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1218,
+          "caption": "アリーナN棟 中アリーナ",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1218thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1218big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1219,
+          "caption": "中央広場",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1219thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1219big",
+          "largeVariantStatus": "machine-description-only",
+          "pixelsReviewed": false
+        }
+      ]
+    },
+    {
+      "name": "グラウンドの写真",
+      "url": "https://kawaguchicity-hs.ed.jp/p/photo_albums/photo_list/224/55?frame_id=439",
+      "photos": [
+        {
+          "id": 1891,
+          "caption": "空から見た川口市立高等学校",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1891thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1891big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1893,
+          "caption": "グラウンド（400メートルトラック・人工芝）、テニスコート４面",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1893thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1893big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 1894,
+          "caption": "校舎棟とグラウンド",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/1894thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/1894big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        }
+      ]
+    },
+    {
+      "name": "第２校地の写真",
+      "url": "https://kawaguchicity-hs.ed.jp/p/photo_albums/photo_list/224/60?frame_id=439",
+      "photos": [
+        {
+          "id": 4859,
+          "caption": "第２校地空撮",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/4859thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/4859big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        },
+        {
+          "id": 4860,
+          "caption": "体育館",
+          "thumbnailUrl": "https://kawaguchicity-hs.ed.jp/files/download/4860thumb",
+          "largeVariantUrl": "https://kawaguchicity-hs.ed.jp/files/download/4860big",
+          "largeVariantStatus": "403-from-remote-reader",
+          "pixelsReviewed": false
+        }
+      ]
+    }
+  ],
+  "usage": "Explicit links are a research index only. Do not fetch at app runtime or ship copies without copyright/privacy review.",
+  "reviewSummary": {
+    "entries": 31,
+    "thirdPartyTextDescriptionsReceived": 21,
+    "thirdParty403OrInaccessible": 10,
+    "individualPixelsDirectlyViewed": 0,
+    "note": "Distinct page cover images and a few municipal photographs viewed via search-index image cache; those are NOT the individual album binaries. Do not infer dimensions from machine captions."
+  }
+}

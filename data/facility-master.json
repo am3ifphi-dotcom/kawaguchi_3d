@@ -1,0 +1,1107 @@
+{
+  "schemaVersion": 1,
+  "dateReviewed": "2026-09-28",
+  "units": "m (all local coordinates in metres; drawing mm / 1000)",
+  "coordinateSystem": {
+    "origin": {
+      "lat": 35.8261337,
+      "lon": 139.7191328,
+      "height": null
+    },
+    "status": "仮置き：提供JSONの原点を一時継承。敷地内の実物標点・GL標高は未確認",
+    "horizontalTargetCRS": "JGD2011 / Japan Plane Rectangular CS IX, EPSG:6677 (proposal; source datum unknown)",
+    "threeAxes": "x=east, y=up, z=south (JSON ring[xEast,yNorth] -> Three[xEast, elevation, -yNorth]); 1 unit=1m",
+    "verticalDatum": null,
+    "georegistrationStatus": "unverified; neither PDF raster nor tiles/LOD1 aligned to a surveyed control point"
+  },
+  "sources": {
+    "D1": "27901siryou.pdf; 川口市 新市立高等学校 実施設計 (2015), pp.1–9; p.1 forbids redistribution without city permission; design-stage, not as-built",
+    "D2": "P02.pdf; 広報かわぐち 2015.9 p.2 (design-stage, 1 page)",
+    "JIA": "https://jia-award.jia.or.jp/kenchikusen/2023/best-architecture/2443/",
+    "KUME": "https://www.kumesekkei.co.jp/project/0276.html",
+    "CITY17": "https://www.city.kawaguchi.lg.jp/soshiki/01120/050/2/46354.html (school building, 2017 works)",
+    "CITY21": "https://www.city.kawaguchi.lg.jp/soshiki/01120/050/2/46357.html (arena, 2021 works)",
+    "SCHOOL": "https://kawaguchicity-hs.ed.jp/about/facility (plus /building /arena /ground and four linked albums)",
+    "GIS": "plateau_53395597.json (user-supplied derived LOD1 extraction; official source/datum/version not independently verified)",
+    "TILE": "z18_232811_103095.png and z18_232812_103095.png (user-supplied, image provider/license and acquisition date unverified)",
+    "PHOTOS": "https://kawaguchicity-hs.ed.jp/about/facility (+ four galleries; see data/photo-inventory.json); binary reviewed only for explicitly marked items via search-index thumbnails",
+    "CITY2018": "https://www.city.kawaguchi.lg.jp/material/files/group/3/201801-06.pdf (2018.1 広報かわぐち, 校舎棟完成)",
+    "TAIYO": "https://www.taiyokogyo.co.jp/works/8685/ ; 2017 built membrane, A-class PTFE-coated glass fibre; visible kawaguchi2.jpg / kawaguchi4.jpg via search-image pixels. Historical search snippet for old /use_list/index.php/item?id=351 gives 1,730m², FGT800, but the former page redirects and the original text is not verified.",
+    "PREF_PHOTO": "https://www.pref.saitama.lg.jp/a0109/sr-main/sr-townguide/townguide/school.html ; school_02_01.jpg inspected as image-search pixels; east-facing gate has two tall pale mostly blank end volumes, glazing strips, stairs and visible raised membrane between.",
+    "CITY_PHOTO": "https://city.kawaguchi.lg.jp/soshiki/01120/050/2/46354.html ; ra-ninngusutori-to1.jpg and ra-ninngusutori-to2.jpg inspected as image-search pixels; open side galleries, coloured projecting volumes, small scattered windows, bridges, roof seam grid.",
+    "KUME_STORY": "https://www.kumesekkei.co.jp/designstory/kawaguchi_city_hs.html ; membrane-covered semi-outdoor street between ordinary classrooms S and specialist classrooms N",
+    "CITY_NORTH_EAST_PHOTO": "https://city.kawaguchi.lg.jp/soshiki/01120/050/2/46354.html ; image-search pixels of kitagawagaikann...jpg and higashigawagaikann...jpg: north school external gallery with dark walls, pale slab bands, railings, east end membrane between plain pale masses; exact as-built bay positions unknown.",
+    "CITY_ARENA_OUTSIDE_PHOTO": "https://city.kawaguchi.lg.jp/soshiki/01120/050/2/46357.html ; image-search pixels of okugaikaidann.jpg and tyuuouhiroba.jpg; former shows school south elevation with open galleries and grand stairs; latter shows tree-lined campus road and arena roofs.",
+    "WAYBACK_PROGRESS": "https://web.archive.org/web/20211021233634/https://www.city.kawaguchi.lg.jp/soshiki/04020/005/siritukoukousisetuseibitantou/3/index.html ; 2021 city progress index survives; linked individual construction articles and as-built elevation drawings not recovered.",
+    "WAYBACK_KUME": "https://web.archive.org/web/20240422103703/https://kumesekkei.co.jp/project/0276.html ; 2024 archived design page shows photographs and descriptions, no elevations/sections.",
+    "CITY_PHYSICAL_PHOTOS": "https://www.city.kawaguchi.lg.jp/soshiki/01120/050/2/46357.html ; direct search-image pixels inspected for fijikarusutori-to1.jpg, to2.jpg, to3.jpg, to4.jpg (white suspended arena wall/clerestory and pillars; opposite dojo glazing/gallery/canopy). Image metadata and exact camera positions unavailable.",
+    "KUME_PHOTOS": "https://www.kumesekkei.co.jp/project/0276.html ; inspected search-image thumbnail pixels of 0276_gallery_01_thumb.jpg and 0276_gallery_03_thumb.jpg. Displays asymmetric colour modules and East street underside; not metric reference.",
+    "CITY_WEST_STAIR_PHOTO": "https://www.city.kawaguchi.lg.jp/soshiki/01120/050/2/46357.html ; okugaikaidann.jpg inspected at 1568x1061: broad grey exterior stair, terracotta strips, planted islands, thin handrails, school south elevation behind (likely west/south side connection; no measured distances).",
+    "D1_WEST_PLANS": "27901siryou.pdf pp.3–5: 2015 design site plan, 1F/2F plans show central plaza between arena and school, both north and south outdoor stairs; p.9 school 2F=+4.0m relative to 1F datum. These are plan-stage, not as-built.",
+    "USER_AXIS_CORRECTION": "ユーザーの視覚的な修正：ラーニングストリートへ直結する階段は側面（南北から垂直）でなく、道路軸上で正面（西→東）から接続。正確な寸法と2015年設計平面との登録には追加資料が必要。",
+    "D1_ROOF": "27901siryou.pdf p.7「5–R階平面図」中のR階平面図。膜屋根の北側屋上に屋外機置場1域、南側屋上に屋外機置場2域が明記されている。小さい機器記号はあるが機種・台数・寸法・竣工時設置状態は確認不可（2015年計画）。",
+    "D1_INTERIOR": "27901siryou.pdf pp.4–7 (2015実施設計の室用途と平面), p.9 (計画床レベル)。再配布不可。",
+    "CITY_INTERIOR_PIXELS": "https://www.city.kawaguchi.lg.jp/soshiki/01120/050/2/46354.html ; 竣工写真 ra-ninngusutori-to1.jpg 1568x1175を実画素確認：暗色床、白線、木立の入る角型プランター兼座席、朱赤・青・黄の小立方体、白とコンクリートの吹抜け、膜下面。kyousitu2.jpg 1568x1057を実画素確認：木目机・灰青の椅子・長い濃色黒板・赤い両側の壁・細いライン照明・プロジェクター。カメラ位置・実測寸法は未校正。 daiho-ru.jpg 1568x1047実画素で木質舞台・階段状黒系固定客席・暗幕・明るい天井を確認。学校公式案内の500席の列割は不明。",
+    "SCHOOL_INTERIOR": "https://kawaguchicity-hs.ed.jp/about/facility/building ; 校舎SにHR教室、Nに特別教室、2Fにラーニングコモンズと食堂・カフェテリア・売店、ホームルームの向かいに個人ロッカー、電子黒板機能付きプロジェクター。"
+  },
+  "confidence": "確定=資料への明記値/記述のみ（竣工一致を保証しない）; 推定=根拠ある推計で要検証; 仮置き=試験表示のみ/未確認",
+  "elements": [
+    {
+      "id": "site-1",
+      "name": "第1校地",
+      "source": "SCHOOL, D1 p.2",
+      "value": {
+        "address": "川口市上青木3-1-40",
+        "areaPlanNotificationM2": 49535.91,
+        "areaSurveyM2": 49620.73
+      },
+      "three": null,
+      "confidence": "確定（資料上、面積の定義が異なる）",
+      "note": "竣工JIAでは49,535.91m²。敷地境界とGLは未登録"
+    },
+    {
+      "id": "site-2",
+      "name": "第2校地（今回対象外）",
+      "source": "SCHOOL",
+      "value": {
+        "address": "川口市朝日5-9-18"
+      },
+      "three": null,
+      "confidence": "確定（所在地のみ）"
+    },
+    {
+      "id": "areas-jia",
+      "name": "建築/延床面積（JIA値）",
+      "source": "JIA DATA",
+      "value": {
+        "buildingFootprintM2": 13283.19,
+        "totalFloorM2": 31358.95
+      },
+      "three": null,
+      "confidence": "確定（JIA記載値）",
+      "note": "CITY21/D1値と不一致。面積から建物外周を逆算しない"
+    },
+    {
+      "id": "areas-2015",
+      "name": "建築/延床面積（2015実施設計）",
+      "source": "D1 p.2",
+      "value": {
+        "buildingFootprintM2": 13562.42,
+        "totalFloorM2": 31631.68
+      },
+      "three": null,
+      "confidence": "確定（2015実施設計値）"
+    },
+    {
+      "id": "areas-city2021",
+      "name": "建築/延床面積（川口市2021ページ）",
+      "source": "CITY21",
+      "value": {
+        "buildingFootprintM2": 13552.58,
+        "totalFloorM2": 31631.68
+      },
+      "three": null,
+      "confidence": "確定（川口市ページ記載値）"
+    },
+    {
+      "id": "school-areas-plan",
+      "name": "校舎棟面積表",
+      "source": "D1 p.2",
+      "value": {
+        "floorTotalM2": 21041.03,
+        "footprintM2": 5944.55,
+        "B1M2": 110.69,
+        "F1M2": 5170.1,
+        "F2M2": 4596.7,
+        "F3M2": 3785.38,
+        "F4M2": 3689.6,
+        "F5M2": 3688.56
+      },
+      "three": null,
+      "confidence": "確定（2015計画値）"
+    },
+    {
+      "id": "arena-s-areas-plan",
+      "name": "アリーナS棟面積表",
+      "source": "D1 p.2",
+      "value": {
+        "floorTotalM2": 7086.43,
+        "footprintM2": 4447.77
+      },
+      "three": null,
+      "confidence": "確定（2015計画値）"
+    },
+    {
+      "id": "arena-n-areas-plan",
+      "name": "アリーナN棟面積表",
+      "source": "D1 p.2",
+      "value": {
+        "floorTotalM2": 2387.56,
+        "footprintM2": 1509.46
+      },
+      "three": null,
+      "confidence": "確定（2015計画値）"
+    },
+    {
+      "id": "height-jia",
+      "name": "最高/軒高（JIA）",
+      "source": "JIA DATA",
+      "value": {
+        "maxHeightM": 21.8,
+        "eavesHeightM": 18.4
+      },
+      "three": null,
+      "confidence": "確定（JIA公表値、基準高不明）"
+    },
+    {
+      "id": "levels-plan",
+      "name": "校舎棟各階床レベル（2015断面図）",
+      "source": "D1 p.9 校舎棟断面図",
+      "value": {
+        "abovePlanF1Meters": {
+          "F1": 0,
+          "F2": 4,
+          "F3": 7.6,
+          "F4": 11.2,
+          "F5": 14.8,
+          "RF": 18.4
+        },
+        "eavesM": 18.486,
+        "buildingHeightM": 21.886
+      },
+      "three": null,
+      "confidence": "確定（図示計画値。ただしF1=0を実GLと同一視しない）"
+    },
+    {
+      "id": "arena-levels-plan",
+      "name": "アリーナS棟断面床レベル",
+      "source": "D1 p.9 アリーナ棟断面図",
+      "value": {
+        "abovePlanF1Meters": {
+          "F1": 0,
+          "F2": 4.5,
+          "F3": 8.1,
+          "F4": 11.7,
+          "PHF": 15.3,
+          "RF": 19.8
+        },
+        "eavesM": 19.636,
+        "buildingHeightM": 19.871
+      },
+      "three": null,
+      "confidence": "確定（図示計画値）",
+      "note": "校舎の21.8mをアリーナに流用しない"
+    },
+    {
+      "id": "structure",
+      "name": "構造と階数",
+      "source": "JIA DATA, D1 p.2",
+      "value": {
+        "floorsAbove": 5,
+        "floorsBelow": 1,
+        "structure": "RC造一部S造"
+      },
+      "three": null,
+      "confidence": "確定（資料上）"
+    },
+    {
+      "id": "campus-road",
+      "name": "キャンパスロード",
+      "source": "JIA 本文/写真キャプション, KUME, D1 p.3",
+      "value": {
+        "axis": "東西",
+        "lengthM": 300
+      },
+      "three": null,
+      "confidence": "確定（全長・概念のみ）",
+      "note": "300mは動線全長であり直線寸法・敷地幅ではない"
+    },
+    {
+      "id": "school-grid-plan",
+      "name": "校舎棟通り芯ピッチ（2015図）",
+      "source": "D1 pp.4–5 1F/2F平面図 下辺寸法列",
+      "value": {
+        "typicalBayM": 7.8,
+        "halfBayM": 3.9
+      },
+      "three": null,
+      "confidence": "確定（2015図に印字された部分区間のみ）",
+      "note": "同じ寸法を全通り芯に適用しない。壁の外形/座標/室内実寸には変換不可"
+    },
+    {
+      "id": "school-south",
+      "name": "校舎S棟/普通教室",
+      "source": "SCHOOL /building, D1 pp.3–7",
+      "value": {
+        "use": "HR教室",
+        "floors": "1FおよびS棟3–5F"
+      },
+      "three": null,
+      "confidence": "確定（用途/概位置のみ）"
+    },
+    {
+      "id": "school-north",
+      "name": "校舎N棟/特別教室",
+      "source": "SCHOOL /building, D1 pp.3–7",
+      "value": {
+        "use": "特別教室",
+        "floors": "2FおよびN棟3–5F"
+      },
+      "three": null,
+      "confidence": "確定（用途/概位置のみ）"
+    },
+    {
+      "id": "learning-street",
+      "name": "ラーニングストリート",
+      "source": "SCHOOL /building, KUME, D1 pp.3,5,9; TAIYO, CITY_PHOTO",
+      "value": {
+        "void": "2–5F",
+        "roof": "膜屋根",
+        "zone": "S棟とN棟の間、半屋外"
+      },
+      "three": null,
+      "confidence": "確定（構成・写真の視覚的特徴のみ）、推定（GIS上の投影位置）、仮置き（寸法未確認の外観詳細）",
+      "note": "半屋外通路・屋根の白い横断曲面/骨組、連絡橋と突出した着色ボックスは写真の画素で確認。横断アーチの制御点・骨組ピッチ・橋位置は仮置き。外観スタディは校舎GIS輪郭の内側壁を開放したが、階床・柱・橋は仮配置で実際の室構成や窓を再現しない"
+    },
+    {
+      "id": "arena-s",
+      "name": "アリーナS棟/大アリーナ",
+      "source": "SCHOOL /arena, D1 pp.3–5; CITY_PHYSICAL_PHOTOS",
+      "value": {
+        "basketballCourts": 3,
+        "spectatorSeatsPlan": 480
+      },
+      "three": null,
+      "confidence": "確定（コート数・2015計画席数）",
+      "note": "道路片側の淡色の大壁（上部）、ガラス上帯、開放柱列が市の完成写真で見える。GISの南側大輪郭への割当は道路の方向と用途からの推定で、撮影視点の実測方位未確認。柱間隔、立面・構造は未確定"
+    },
+    {
+      "id": "arena-n",
+      "name": "アリーナN棟",
+      "source": "SCHOOL /arena, D1 pp.3–5; CITY_PHYSICAL_PHOTOS; JIA",
+      "value": {
+        "rooms": [
+          "柔道場",
+          "剣道場",
+          "中アリーナ",
+          "小アリーナ",
+          "トレーニングルーム"
+        ]
+      },
+      "three": null,
+      "confidence": "確定（施設種のみ）",
+      "note": "道路反対側に連続する道場大窓と上階廊下・分節された庇が写真で見える。GIS北側二輪郭に割当てたが撮影位置の実測方位なし。ガラス割、階高、庇ピッチは仮置き"
+    },
+    {
+      "id": "physical-street",
+      "name": "フィジカルストリート",
+      "source": "SCHOOL /arena, D1 p.3; CITY_ARENA_OUTSIDE_PHOTO; JIA photo caption; CITY_PHYSICAL_PHOTOS",
+      "value": {
+        "location": "アリーナN/S棟の間"
+      },
+      "three": null,
+      "confidence": "確定（名称・概位置のみ）",
+      "note": "完成写真とJIAで黒色路面、橙色グラフィック、カツラ並木の外観を確認。9本の木、樹高約7m、色帯3本などは撮影画像からの実測でなく仮置き。広場の湾曲高架路は未モデル。市公式の道場側ガラス面、片側の大きな吊り壁、分節された白い歩行庇、白点の舗装を追加目視。方位と棟同定はGIS・用途との照合による推定"
+    },
+    {
+      "id": "hall",
+      "name": "大ホール",
+      "source": "SCHOOL /building, D1 pp.4,9",
+      "value": {
+        "floor": "1F",
+        "fixedSeats": 500
+      },
+      "three": null,
+      "confidence": "確定（学校サイト記載席数）",
+      "note": "断面図は大ホール床の地下への掘り下げを示す。深さは未確定"
+    },
+    {
+      "id": "cafeteria",
+      "name": "食堂・カフェテリア",
+      "source": "SCHOOL /building, D1 p.5",
+      "value": {
+        "floor": "2F",
+        "adjacentTo": "ラーニングストリート"
+      },
+      "three": null,
+      "confidence": "確定（用途/階のみ）"
+    },
+    {
+      "id": "commons",
+      "name": "ラーニングコモンズ",
+      "source": "SCHOOL /building, D1 p.5",
+      "value": {
+        "floor": "2F"
+      },
+      "three": null,
+      "confidence": "確定（用途/階のみ）"
+    },
+    {
+      "id": "pool",
+      "name": "屋外プール",
+      "source": "SCHOOL /arena, D1 p.3",
+      "value": {
+        "lengthM": 50,
+        "location": "アリーナN棟の北側（配置図）"
+      },
+      "three": null,
+      "confidence": "確定（長さ/概位置のみ）"
+    },
+    {
+      "id": "ground",
+      "name": "第1グラウンド",
+      "source": "SCHOOL /ground, D1 p.3",
+      "value": {
+        "trackLengthM": 400,
+        "tennisCourts": 4,
+        "surface": "人工芝"
+      },
+      "three": null,
+      "confidence": "確定（仕様・トラック周長のみ）"
+    },
+    {
+      "id": "surroundings",
+      "name": "周辺建物LOD1",
+      "source": "GIS",
+      "value": {
+        "features": 3070,
+        "heightNoDataSentinel": -9999,
+        "heightNoDataCount": 208
+      },
+      "three": null,
+      "confidence": "仮置き（提供抽出。国の原本/測地系/高さの基準未照合）"
+    },
+    {
+      "id": "airphoto",
+      "name": "空中写真タイル",
+      "source": "TILE",
+      "value": {
+        "zoom": 18,
+        "tileSizePx": 256,
+        "tiles": 2
+      },
+      "three": null,
+      "confidence": "仮置き（出典/ライセンス未確認、校地全体を覆わない）"
+    },
+    {
+      "id": "entrances",
+      "name": "東西の門・中央広場",
+      "source": "D1 p.3, SCHOOL /building /arena",
+      "value": {
+        "east": "都市の門",
+        "west": "伝統の門",
+        "middle": "中央広場"
+      },
+      "three": null,
+      "confidence": "確定（名称・概位置のみ）"
+    },
+    {
+      "id": "gis-candidate-201a8894",
+      "name": "アリーナS棟候補",
+      "source": "D1 pp.2–4: 計画建築面積4,447.77㎡、西側配置; GIS輪郭面積4,389.9㎡; GIS id=bldg_201a8894-473d-4e6a-9182-de27ee40ccf3",
+      "value": {
+        "gisPolygonAreaM2": 4389.9,
+        "lod1HeightM": 20.2,
+        "boundsLocalEastNorthM": {
+          "west": -122.78,
+          "east": -30.18,
+          "south": -10.03,
+          "north": 44.96
+        }
+      },
+      "three": {
+        "referenceCenterX": -76.48,
+        "referenceCenterY": 10.1,
+        "referenceCenterZ": -17.46,
+        "orientation": "bbox center for inspection ONLY; actual polygon rendered"
+      },
+      "confidence": "推定（IDと棟名の対応は未検証。座標と高さは提供JSON記録値）",
+      "note": "図面は優先。LOD1高さ基準不明、建築面積とポリゴン面積は定義・撮影年が異なり得る。±0.3m精度は未保証"
+    },
+    {
+      "id": "gis-candidate-b01d7688",
+      "name": "アリーナN棟東側候補",
+      "source": "D1 p.3 アリーナN棟北西側、GIS面積671.5㎡; GIS id=bldg_b01d7688-a716-41e7-9147-91bbf9c042c7",
+      "value": {
+        "gisPolygonAreaM2": 671.5,
+        "lod1HeightM": 12.9,
+        "boundsLocalEastNorthM": {
+          "west": -49.95,
+          "east": -12.44,
+          "south": 65.03,
+          "north": 84.87
+        }
+      },
+      "three": {
+        "referenceCenterX": -31.2,
+        "referenceCenterY": 6.45,
+        "referenceCenterZ": -74.95,
+        "orientation": "bbox center for inspection ONLY; actual polygon rendered"
+      },
+      "confidence": "推定（IDと棟名の対応は未検証。座標と高さは提供JSON記録値）",
+      "note": "図面は優先。LOD1高さ基準不明、建築面積とポリゴン面積は定義・撮影年が異なり得る。±0.3m精度は未保証"
+    },
+    {
+      "id": "gis-candidate-0c732e20",
+      "name": "アリーナN棟西側候補",
+      "source": "D1 p.3 アリーナN棟北西側、GIS面積650.8㎡; GIS id=bldg_0c732e20-c8b1-494c-b725-ad31674dfc8a",
+      "value": {
+        "gisPolygonAreaM2": 650.8,
+        "lod1HeightM": 13.0,
+        "boundsLocalEastNorthM": {
+          "west": -93.11,
+          "east": -55.47,
+          "south": 63.07,
+          "north": 82.28
+        }
+      },
+      "three": {
+        "referenceCenterX": -74.29,
+        "referenceCenterY": 6.5,
+        "referenceCenterZ": -72.67,
+        "orientation": "bbox center for inspection ONLY; actual polygon rendered"
+      },
+      "confidence": "推定（IDと棟名の対応は未検証。座標と高さは提供JSON記録値）",
+      "note": "図面は優先。LOD1高さ基準不明、建築面積とポリゴン面積は定義・撮影年が異なり得る。±0.3m精度は未保証"
+    },
+    {
+      "id": "gis-candidate-4cf7907f",
+      "name": "校舎S側候補",
+      "source": "D1 pp.3–5 校舎棟南側、GIS面積2,112.7㎡; GIS id=bldg_4cf7907f-f7c3-4341-9b50-2d6a013032ba",
+      "value": {
+        "gisPolygonAreaM2": 2112.7,
+        "lod1HeightM": 21.3,
+        "boundsLocalEastNorthM": {
+          "west": -2.85,
+          "east": 107.65,
+          "south": 13.57,
+          "north": 38.41
+        }
+      },
+      "three": {
+        "referenceCenterX": 52.4,
+        "referenceCenterY": 10.65,
+        "referenceCenterZ": -25.99,
+        "orientation": "bbox center for inspection ONLY; actual polygon rendered"
+      },
+      "confidence": "推定（IDと棟名の対応は未検証。座標と高さは提供JSON記録値）",
+      "note": "図面は優先。LOD1高さ基準不明、建築面積とポリゴン面積は定義・撮影年が異なり得る。±0.3m精度は未保証。外観スタディの壁高さ18.4mはD1 p.9のRFの計画値。窓割/内側ボックスは写真からの模式再現で実測ではない。中庭側の壁は取り除いたが GIS 屋根平面輪郭を階床として繰り返すため内外開口の奥行き表現は不完全"
+    },
+    {
+      "id": "gis-candidate-44f5071e",
+      "name": "校舎中央の膜屋根投影候補",
+      "source": "D1 p.3 膜屋根付近、GIS面積1,722.8㎡; GIS id=bldg_44f5071e-59b1-41af-840e-03d9cd2bb6a9; TAIYO supplier photos and old listing snippet; KUME_STORY",
+      "value": {
+        "gisPolygonAreaM2": 1722.8,
+        "lod1HeightM": 22.1,
+        "boundsLocalEastNorthM": {
+          "west": 5.09,
+          "east": 99.7,
+          "south": 33.56,
+          "north": 57.91
+        }
+      },
+      "three": {
+        "referenceCenterX": 52.4,
+        "referenceCenterY": 11.05,
+        "referenceCenterZ": -45.73,
+        "orientation": "bbox center for inspection ONLY; actual polygon rendered"
+      },
+      "confidence": "推定（中央通路GIS輪郭と写真の膜屋根を照合。膜面積と投影面積の一致は保証しない）",
+      "note": "GIS輪郭面積1,722.8㎡ ≠ 膜面積1,730㎡（旧サイトの検索索引のみ）。膜曲率/実高さ/XY位置は未測量。3.3m冠高さは表示用仮置き。Phase 2の膜屋根平面は当該GISリング四隅のbilinear補間を用い端部のポリゴン逸脱を是正した（GL/屋根曲面の実測精度は未保証）"
+    },
+    {
+      "id": "gis-candidate-2d60618f",
+      "name": "校舎N側候補",
+      "source": "D1 pp.3–5 校舎棟北側、GIS面積1,719.4㎡; GIS id=bldg_2d60618f-f5c7-4f74-958b-e4b49cd172e3",
+      "value": {
+        "gisPolygonAreaM2": 1719.4,
+        "lod1HeightM": 20.6,
+        "boundsLocalEastNorthM": {
+          "west": -4.98,
+          "east": 98.19,
+          "south": 49.87,
+          "north": 73.63
+        }
+      },
+      "three": {
+        "referenceCenterX": 46.6,
+        "referenceCenterY": 10.3,
+        "referenceCenterZ": -61.75,
+        "orientation": "bbox center for inspection ONLY; actual polygon rendered"
+      },
+      "confidence": "推定（IDと棟名の対応は未検証。座標と高さは提供JSON記録値）",
+      "note": "図面は優先。LOD1高さ基準不明、建築面積とポリゴン面積は定義・撮影年が異なり得る。±0.3m精度は未保証。外観スタディの壁高さ18.4mはD1 p.9のRFの計画値。窓割/内側ボックスは写真からの模式再現で実測ではない。中庭側の壁は取り除いたが GIS 屋根平面輪郭を階床として繰り返すため内外開口の奥行き表現は不完全"
+    },
+    {
+      "id": "gis-candidate-connector",
+      "name": "アリーナN/S間接続部候補（同定未了）",
+      "source": "D1 p.3 配置図; GIS id=bldg_677aa8fc-8951-4a20-a5a1-cc72ffa13409",
+      "value": {
+        "gisPolygonAreaM2": 169.7,
+        "lod1HeightM": 8.0,
+        "boundsLocalEastNorthM": {
+          "west": -34.75,
+          "east": 5.64,
+          "south": 37.38,
+          "north": 65.77
+        }
+      },
+      "three": {
+        "referenceCenterX": -14.56,
+        "referenceCenterY": 4,
+        "referenceCenterZ": -51.58
+      },
+      "confidence": "推定（GISと計画図の形状・位置による候補）",
+      "note": "フィジカルストリートの庇、柱、廊下のどれかは確定できない。室名を割り当てない"
+    },
+    {
+      "id": "exterior-entrance-stairs-study",
+      "name": "校舎東側エントランス階段（外観スタディ）",
+      "source": "PREF_PHOTO school_02_01.jpg (grey open-air front stairs, median trees, metal rails); SCHOOL 452medium (another photographed stair with reddish landing; location NOT proven same); D1 p.9 2F+4.0m; GIS outline",
+      "value": {
+        "modelRunM": 21,
+        "modelRiseM": 4,
+        "modelTreads": 24,
+        "modelWidthM": 22,
+        "modelFlights": 3
+      },
+      "three": {
+        "eastRangeX": [
+          99,
+          120
+        ],
+        "northRange": [
+          36,
+          58
+        ]
+      },
+      "confidence": "仮置き（階段の存在は写真で確認、寸法・段数・斜路/構造は未測量）",
+      "note": "東正面の灰色段、中央の樹木・植栽帯・金属手摺りは県の写真で確認。赤褐色の踊り場は別写真に見えるが同じ外階段との同定を撤回。モデルの24段・3分割・約21m・幅22mは測量値でない。モデルは植栽帯で2列に分けた。2F+4.0mは計画断面値でGL未照合"
+    },
+    {
+      "id": "exterior-roof-curve-study",
+      "name": "膜屋根とアリーナの曲面形状スタディ",
+      "source": "D1 p.9; TAIYO kawaguchi2.jpg/kawaguchi4.jpg; GIS central and arena S footprints",
+      "value": {
+        "schoolMembraneEavePlanM": 18.486,
+        "schoolMembraneStudyRiseM": 3.3,
+        "arenaSouthBaseStudyM": 16.7,
+        "arenaSouthRoofStudyRiseM": 2.9
+      },
+      "three": null,
+      "confidence": "仮置き（曲率、屋根支持架構、アリーナ稜線および相対GLが不明）",
+      "note": "膜は白色・横断リブを写真参照したが制御点は取得できない。アリーナS最高19.871mはD1の別断面値で、屋根スタディ最高19.6mと同じ実測位置を意味しない"
+    },
+    {
+      "id": "exterior-facade-study",
+      "name": "南北校舎外壁・廊下側の試作窓割",
+      "source": "PREF_PHOTO school_02_01.jpg; CITY_PHOTO ra-ninngusutori-to1.jpg, ra-ninngusutori-to2.jpg; D1 p.9; CITY_NORTH_EAST_PHOTO; CITY_ARENA_OUTSIDE_PHOTO; KUME_PHOTOS",
+      "value": {
+        "outerFacadeGlazing": "dark open-gallery bands and slab edges on school N/S long elevations; unmeasured positions",
+        "innerStreetModules": "colour/void pattern illustrative"
+      },
+      "three": null,
+      "confidence": "仮置き（材色の方向性のみ写真確認、窓数/位置/色配列/室の抜けは未確定）",
+      "note": "写真との矛盾により外面の淡色均一帯窓を廃止、GIS実外周の分割辺上に濃色廊下・白い床端・手摺りを配置。窓幅と間隔は模式表現。教室窓は貫通加工されておらず内部歩行不可。久米設計の内部通路写真で色箱が片側に多く見えたため、北側に色の比率を高くしたが棟同定は未校正で仮置き"
+    },
+    {
+      "id": "archive-photo-reconciliation-20260928",
+      "name": "竣工立面図探索と外観写真照合",
+      "source": "WAYBACK_PROGRESS; WAYBACK_KUME; CITY_NORTH_EAST_PHOTO; CITY_ARENA_OUTSIDE_PHOTO; docs/archive-photo-review.md",
+      "value": {
+        "asBuiltElevationRecovered": false,
+        "archivedCityIndexDate": "2021-10-21",
+        "archivedArchitectPageDate": "2024-04-22",
+        "photoContradictionsCorrected": [
+          "school north outer gallery",
+          "school south outer gallery",
+          "east stairs multi-flight",
+          "arena street side previously fully closed",
+          "north arena dojo glazing previously pasted on solid wall",
+          "north school east glazed shaft floating outside GIS footprint",
+          "membrane roof plan extrapolated beyond GIS quadrilateral"
+        ]
+      },
+      "three": null,
+      "confidence": "確定（確認したアーカイブの掲載内容と写真に写る特徴のみ）、推定（GIS辺への割付）、仮置き（全開口/階段寸法）",
+      "note": "公開アーカイブの索引が残っていてもリンク先図面が取得可能とは限らない。竣工図の不存在は断定しない。詳細は docs/archive-photo-review.md"
+    },
+    {
+      "id": "membrane-plan-quad-audit",
+      "name": "膜屋根のGIS投影輪郭内の格子検査",
+      "source": "GIS bldg_44f5071e-59b1-41af-840e-03d9cd2bb6a9; scripts/audit-exterior.mjs",
+      "value": {
+        "gisPlanAreaM2": 1722.82415,
+        "studyRoofGridPlanOutsideToleranceM": 1e-07,
+        "roofCrownRiseStudyM": 3.3
+      },
+      "three": {
+        "eastNorthCorners": [
+          [
+            99.7,
+            38.07
+          ],
+          [
+            98.19,
+            57.91
+          ],
+          [
+            5.09,
+            50.49
+          ],
+          [
+            6.25,
+            33.56
+          ]
+        ]
+      },
+      "confidence": "確定（提供GISデータ内の平面数値）、仮置き（現地GL・屋根弧高・施工後との一致）",
+      "note": "屋根の四辺を提供GIS中央リングに沿わせた。これでGIS内の平面は閉じるが、実膜端のXY測量精度±0.3mを保証するものではない"
+    },
+    {
+      "id": "arena-facade-photo-study",
+      "name": "アリーナ通り側の吊り壁・道場開口・連続庇",
+      "source": "CITY_PHYSICAL_PHOTOS; JIA; GIS ids 201a8894,0c732e20,b01d7688",
+      "value": {
+        "whiteUpperWall": "one side of street, assigned to GIS arena S candidate",
+        "dojoGlazing": "opposite side, assigned to GIS arena N candidates",
+        "galleryCanopy": "segmented pale roof",
+        "photoWingIdentity": "inferred, camera bearing uncalibrated"
+      },
+      "three": null,
+      "confidence": "確定（写真で見える外観の構成のみ）、推定（南北棟への写真帰属）、仮置き（高さ/ピッチ/開口/植栽本数）",
+      "note": "アリーナSのGIS街路側壁を下部開放の柱列と上部淡色大壁へ、Nの街路側を広い透明ガラスに変更。屋根形も未測量。公式写真の左右だけを棟名同定の根拠にはしない"
+    },
+    {
+      "id": "exterior-east-signage-study",
+      "name": "校舎S東端の学校名サイン試作",
+      "source": "PREF_PHOTO school_02_01.jpg; CITY_NORTH_EAST_PHOTO; GIS bldg_4cf7907f east end wall",
+      "value": {
+        "text": "川口市立高等学校",
+        "fontAndExactPlacement": "unverified"
+      },
+      "three": {
+        "referenceEastX": 107.32,
+        "referenceNorth": 27.5,
+        "referenceY": 17.5
+      },
+      "confidence": "確定（表記・サインの存在を公開写真で確認）、推定（S東側端壁への割当と面の向き）、仮置き（文字サイズ・高さ・材料・フォント）",
+      "note": "学校名の存在と表記は写真確認。モデルは校舎S東端の仮位置。県の写真ではサインのある翼が画像右、モデルの東正面斜角では左。写真方位とGISのS/N棟対応が未校正のため重大な帰属疑義あり。位置確定まで移設しない。CanvasTextureは写真/校章/掲示物をコピーしていない"
+    },
+    {
+      "id": "exterior-gate-median-study",
+      "name": "東側階段の中央植栽帯・手摺り・樹木",
+      "source": "PREF_PHOTO school_02_01.jpg: 画像画素の階段中央の複数樹木・植栽・手摺り",
+      "value": {
+        "renderedTreeCount": 3,
+        "surveyedTreeCount": null,
+        "stairMedianWidthM": null
+      },
+      "three": {
+        "modelMedianNorthRange": [
+          45.5,
+          48.3
+        ]
+      },
+      "confidence": "確定（要素の存在）／仮置き（本数・樹種・位置・幅・高低）",
+      "note": "段の高さに追従する模式的な植栽帯。実際の歩行者動線、バリアフリー接続は未特定"
+    },
+    {
+      "id": "exterior-gate-fence-road-study",
+      "name": "東正面の色付き境界柵と接道面",
+      "source": "PREF_PHOTO school_02_15.jpg: 東正面の多色柵、手前の舗装道路と出入口",
+      "value": {
+        "surveyedFenceLengthM": null,
+        "surveyedRoadWidthM": null
+      },
+      "three": {
+        "modelFenceEastX": 133.8,
+        "modelFenceNorthIntervals": [
+          [
+            15,
+            35
+          ],
+          [
+            59,
+            77
+          ]
+        ],
+        "modelRoadEastRange": [
+          139.5,
+          156.5
+        ]
+      },
+      "confidence": "確定（柵・道路の存在と色の変化）／仮置き（全ての配置、幅、柵ピッチ）",
+      "note": "道路と敷地界の測量図が無いためフェンス2区間のみ模式表示。校門実位置は未確定"
+    },
+    {
+      "id": "central-plaza-south-external-stair",
+      "name": "中央広場南側の扇形屋外階段（旧・側面直結モデル撤回／接続先未確定）",
+      "source": "D1_WEST_PLANS pp.4,5; CITY_WEST_STAIR_PHOTO okugaikaidann.jpg",
+      "value": {
+        "photoObserved": [
+          "広幅の灰色段",
+          "朱赤の段帯",
+          "金属手摺り",
+          "樹木を伴う植栽島"
+        ],
+        "modelRiseM": null,
+        "modelStepCount": null,
+        "actualStepCount": null,
+        "modelStatus": "撤回：校舎2Fへの側面直結として置いた形状は削除。設計図p.4–5に外階段はあるが、位置と接続先を確定できるまで別物として保留"
+      },
+      "three": {
+        "modeled": false,
+        "previousGuessWithdrawn": true
+      },
+      "confidence": "確定（図面・写真中に別の階段の手掛かり）／未確定（同定・接続先・レベル・実寸・現況の存否）",
+      "note": "先行実装は写真に反し、ラーニングストリートに南北側面から垂直接続する誤造形だった。ユーザー指摘に従い表示から除去。元の写真の南側屋外階段の存在自体は否定しないが、直接連絡階段と同一視しない。"
+    },
+    {
+      "id": "central-plaza-north-external-stair",
+      "name": "中央広場北側の屋外階段（旧・側面直結モデル撤回／接続先未確定）",
+      "source": "D1_WEST_PLANS pp.4,5; plan image shows rectilinear north stair near north arena entrance",
+      "value": {
+        "modelRiseM": null,
+        "modelStepCount": null,
+        "actualStepCount": null,
+        "modelStatus": "撤回：校舎2Fへの側面直結として置いた形状は削除。設計図p.4–5に外階段はあるが、位置と接続先を確定できるまで別物として保留"
+      },
+      "three": {
+        "modeled": false,
+        "previousGuessWithdrawn": true
+      },
+      "confidence": "確定（図面・写真中に別の階段の手掛かり）／未確定（同定・接続先・レベル・実寸・現況の存否）",
+      "note": "先行実装は写真に反し、ラーニングストリートに南北側面から垂直接続する誤造形だった。ユーザー指摘に従い表示から除去。設計平面上の別の階段の存在自体は否定しないが、直接連絡階段と同一視しない。"
+    },
+    {
+      "id": "central-plaza-west-2f-link",
+      "name": "中央広場からラーニングストリート2Fへの接続踊り場",
+      "source": "D1_WEST_PLANS pp.4–5; SCHOOL 校舎棟施設案内（2Fラーニングストリート）; USER_AXIS_CORRECTION",
+      "value": {
+        "modelDeckTopM": 4,
+        "actualDeckExtent": null
+      },
+      "three": {
+        "modelEastRange": [
+          -8,
+          5.9
+        ],
+        "modelNorthRange": [
+          34,
+          50
+        ]
+      },
+      "confidence": "確定（東西に道が連続する計画、学校2F値）、仮置き（現在の平面輪郭と手摺り位置）",
+      "note": "モデルは西側正面から東方向に上る階段と接する。校舎2Fの既存床x≈5.65mに平面で重なる。平面数値は暫定"
+    },
+    {
+      "id": "central-plaza-ground-continuity",
+      "name": "アリーナ通り1Fと中央広場地上面の連続床",
+      "source": "D1_WEST_PLANS pp.3–5; CITY_WEST_STAIR_PHOTO; CITY_PHYSICAL_PHOTOS",
+      "value": {
+        "measuredPlazaGL": null,
+        "modelY": 0
+      },
+      "three": {
+        "modelEastRange": [
+          -41,
+          7
+        ],
+        "modelNorthRange": [
+          10,
+          64
+        ]
+      },
+      "confidence": "確定（通路と広場の連続性）、仮置き（舗装色・範囲・実GL）",
+      "note": "既存フィジカルストリート床の東端x=-14mと重なり、階段下端まで連続"
+    },
+    {
+      "id": "school-south-central-glazed-core",
+      "name": "校舎南面の中央縦長ガラス・開放廊下帯",
+      "source": "D1 p.8 校舎南立面図；GIS S棟外周の凹部（x≈49.1–56.3,n≈16–22.4）；CITY_WEST_STAIR_PHOTO okugaikaidann.jpg",
+      "value": {
+        "planGlazedTowerPresent": true,
+        "asBuiltMullionPitchM": null
+      },
+      "three": {
+        "recessEastX": [
+          49.11,
+          55.98
+        ],
+        "modelFloorLevelsM": [
+          0,
+          4,
+          7.6,
+          11.2,
+          14.8,
+          18.4
+        ]
+      },
+      "confidence": "確定（2015年南立面の縦長ガラス区画と写真で見える廊下帯）、推定（GIS凹部への対応）、仮置き（窓数・縦桟ピッチ）",
+      "note": "既存外周壁を削る開口ではなくガラス重ね貼りの模式試作。現況の外壁開口寸法は未確定"
+    },
+    {
+      "id": "arena-n-roof-x-brace-study",
+      "name": "アリーナN棟屋上のX字交差フレーム候補",
+      "source": "D1 27901siryou.pdf p.8 アリーナN南立面・中央上部の交差形状。JIA空撮には屋根の分節は見えるが部材寸法は判別不可",
+      "value": {
+        "roofGapModuleCount": 2,
+        "asBuiltMemberSizeM": null
+      },
+      "three": {
+        "studyEastRange": [
+          -55.55,
+          -49.15
+        ],
+        "studyNorthPositions": [
+          64.5,
+          66.0
+        ],
+        "studyVerticalRange": [
+          12.96,
+          16.1
+        ]
+      },
+      "confidence": "確定（設計時南立面のX字交差記号）、推定（アリーナN中央ギャップとの対応）、仮置き（実際の設置有無・平面位置・部材長と材質）",
+      "note": "現地写真に写るX字部材か、構造詳細か、設計図上のみの表現か未照合。屋根端に接する2枚の細い框付きX試作であり、竣工構造を宣言しない"
+    },
+    {
+      "id": "school-central-roof-cross-study",
+      "name": "校舎南面中央の上部交差フレーム候補",
+      "source": "D1 27901siryou.pdf p.8 校舎南立面の中央付近の交差線（読み取り未校正）",
+      "value": {
+        "asBuiltExists": null,
+        "surveyedElevationM": null
+      },
+      "three": {
+        "studyEastRange": [
+          49.15,
+          55.95
+        ],
+        "studyVerticalRange": [
+          18.45,
+          20.8
+        ]
+      },
+      "confidence": "仮置き（図面上のXが屋上部材に該当するかも要照合）",
+      "note": "要求された屋上X字の候補を視覚化。追加写真で校舎とアリーナのどちらの屋上か確認後に棟帰属を改める"
+    },
+    {
+      "id": "learning-street-west-front-direct-stair",
+      "name": "ラーニングストリート西正面直結階段（中央広場側）",
+      "source": "USER_AXIS_CORRECTION; D1 p.3–5 校舎・中央広場とキャンパスロード（正面階段の輪郭を数値化できず）; D1 p.9 2015計画2F+4m; JIA 2023掲載キャンパスロード俯瞰写真（正面階段の同定は未了）",
+      "value": {
+        "ascentDirection": "西→東／ラーニングストリートの長軸と平行",
+        "modelTreads": 24,
+        "asBuiltTreads": null,
+        "model2FdatumM": 4,
+        "asBuiltGL": null
+      },
+      "three": {
+        "modelEastRange": [
+          -29,
+          -8
+        ],
+        "modelNorthRange": [
+          32.5,
+          51.5
+        ],
+        "frontLandingEastRange": [
+          -8,
+          5.9
+        ]
+      },
+      "confidence": "推定（ユーザー指摘に沿う西→東の正面接続方向）、資料明記の計画値（2F+4m）、仮置き（正確な位置・幅・段数・手摺り）",
+      "note": "従来の南北側面から直結する2階段を撤回して軸を修正。旧写真の南側外階段とは同定しない。現場位置の外形±0.3m保証不可 市の屋外階段写真中の赤帯・植栽島はこの正面階段と同定できず、現行モデルには流用していない。"
+    },
+    {
+      "id": "school-roof-open-air-equipment-yards",
+      "name": "校舎北翼1域・南翼2域の屋外機置場（2015計画）",
+      "source": "D1_ROOF p.7（屋外機置場の文字を拡大目視）; GIS 校舎S/N屋根候補; D1 p.9 RF+18.4m",
+      "value": {
+        "designAreasNorth": 1,
+        "designAreasSouth": 2,
+        "asBuiltCount": null,
+        "equipmentType": null,
+        "machineDimensions": null,
+        "observedAsBuiltPhoto": false
+      },
+      "three": {
+        "representation": "切替可能な展示用機器外装、台座・ルーバー・上面リング。北・南のGIS屋根内部に72個仮配置。膜屋根上は0",
+        "modelHousingCount": 72,
+        "modelRoofY": 18.4,
+        "asBuiltEquipmentCount": null
+      },
+      "confidence": "確定（2015年計画図に屋外機置場の表記）／資料明記の計画値（RF+18.4m）／仮置き（機器の種類・数・寸法・ルーバー・色・位置・現況存否）",
+      "note": "機器詳細・設置数量を実在仕様と誤認しないためUIに設備スタディ専用トグルを設けた。p.7 の図版そのものや市公式写真は配布していない。"
+    },
+    {
+      "id": "learning-street-front-stair-finish-study",
+      "name": "ラーニングストリート西正面階段の縁・陰影の画面スタディ",
+      "source": "USER_AXIS_CORRECTION; D1 p.4–5, p.9; 正面階段の縁仕上げ仕様は不明",
+      "value": {
+        "modelDetail": "24モデル段の中性トーンの縁線・蹴上げ陰影のInstancedMesh",
+        "asBuiltNosingType": null
+      },
+      "three": {
+        "modeled": true,
+        "externalSideEntry": false
+      },
+      "confidence": "推定（正面への接続方向）／仮置き（縁部の仕上げ・ピッチ・寸法）",
+      "note": "別の市公式屋外階段写真の赤い帯や植栽を流用していない。モデルの歩行床高さを変更せず、描画のみを精緻化。"
+    },
+    {
+      "id": "learning-street-interior-furnishing-study",
+      "name": "2Fラーニングストリート内部の写真確認要素",
+      "source": "D1_INTERIOR p.5,p.9; CITY_INTERIOR_PIXELS ra-ninngusutori-to1.jpg; SCHOOL_INTERIOR",
+      "value": {
+        "floorDesignM": 4,
+        "photoMotifs": [
+          "暗色床と白い区画線",
+          "角型植栽座席と木立",
+          "彩色の小型腰掛け"
+        ],
+        "asBuiltPlanterCount": null
+      },
+      "three": {
+        "modeled": true,
+        "modelPlanters": 3,
+        "placement": "x=27/52/77m、GIS吹抜け候補内、非実測"
+      },
+      "confidence": "確定（用途と写真に見える特徴）、資料明記の計画値（2F+4m）、仮置き（現況位置・本数・座席寸法と床仕上げ仕様）",
+      "note": "写真原本は同梱しない。街路床の位置はGIS屋根投影から推定した階段・床のモデル境界に依存。"
+    },
+    {
+      "id": "north-2f-learning-commons-study",
+      "name": "N棟西寄り2Fラーニングコモンズ",
+      "source": "D1_INTERIOR p.5; SCHOOL_INTERIOR",
+      "value": {
+        "function": "図書館・学習とディスカッション",
+        "actualBookshelfCount": null
+      },
+      "three": {
+        "modeled": "棚4本と共有卓3台の用途模式表示のみ、室内間仕切りなし"
+      },
+      "confidence": "確定（用途／階）、仮置き（棚／卓／区画形状と配置）",
+      "note": "開架の什器種類と寸法は現況写真の画素確認ができていない。立入可能な室内再現ではない。"
+    },
+    {
+      "id": "south-2f-cafeteria-study",
+      "name": "S棟西寄り2F食堂・カフェテリア",
+      "source": "D1_INTERIOR p.5; SCHOOL_INTERIOR",
+      "value": {
+        "function": "食堂・カフェテリア・売店",
+        "actualSeatingCount": null
+      },
+      "three": {
+        "modeled": "卓8台と長椅子の用途模式表示のみ、厨房・売店未実装"
+      },
+      "confidence": "確定（用途／階）、仮置き（家具・区画・配置）",
+      "note": "写真での家具照合は未了。別学校の一般写真を転用しない。"
+    },
+    {
+      "id": "south-3f-sample-classroom-study",
+      "name": "S棟3F普通教室の一室サンプル",
+      "source": "D1_INTERIOR p.6,p.9; CITY_INTERIOR_PIXELS kyousitu2.jpg; SCHOOL_INTERIOR",
+      "value": {
+        "floorDesignM": 7.6,
+        "observed": [
+          "木目机",
+          "灰青の椅子",
+          "濃色の長い黒板",
+          "赤い壁帯",
+          "天井ライン照明とプロジェクター"
+        ],
+        "actualDeskCount": null,
+        "actualPartitionLines": null
+      },
+      "three": {
+        "modeled": "x=67.5..75.3、北19.3..27.2mに間仕切り・机16組・照明の比較用1室のみ",
+        "modelDeskCount": 16
+      },
+      "confidence": "確定（S棟3〜5F用途／写真で確認の要素）、資料明記の計画値（3F+7.6m）、仮置き（室位置・机16組・室寸法・仕上げ）",
+      "note": "未確認の教室入口／法定避難経路／実設備配線は未実装。歩行ルートと結び付けない。"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "C1",
+      "field": "建築面積m2",
+      "candidates": {
+        "JIA": 13283.19,
+        "D1_2015": 13562.42,
+        "CITY21": 13552.58
+      },
+      "status": "unresolved; do not model from these values"
+    },
+    {
+      "id": "C2",
+      "field": "延床面積m2",
+      "candidates": {
+        "JIA": 31358.95,
+        "D1_2015_and_CITY21": 31631.68
+      },
+      "status": "unresolved; may be changes in calculation/scope"
+    },
+    {
+      "id": "C3",
+      "field": "高さm",
+      "candidates": {
+        "JIA_max": 21.8,
+        "JIA_eaves": 18.4,
+        "D1_school_section_max": 21.886,
+        "D1_school_section_eaves": 18.486
+      },
+      "status": "different reference/rounding/phase; verify before precise geometry"
+    },
+    {
+      "id": "C4",
+      "field": "site area definition",
+      "candidates": {
+        "notification": 49535.91,
+        "plan_survey": 49620.73
+      },
+      "status": "not necessarily contradiction: D1 explicitly distinguishes two definitions"
+    },
+    {
+      "id": "C5",
+      "field": "signed east end wall: GIS S or N",
+      "candidates": {
+        "model": "GIS south candidate east end x≈107.3 north≈27.5",
+        "prefectural entrance photograph": "name and tall pale end wall on right of staircase; model oblique-front rendering shows name-bearing wall on left"
+      },
+      "status": "unresolved: photographic azimuth, image mirroring, GIS wing association not yet verified; do NOT claim exact facade placement"
+    },
+    {
+      "id": "C6",
+      "field": "red stair landing versus photographed grey entrance stairs",
+      "candidates": {
+        "school facility photo 452medium": "reddish landing in another stair view (location unverified)",
+        "prefectural school_02_01.jpg": "grey external gateway stairs with trees/rails",
+        "city 2021 arena stair photo": "okugaikaidann.jpg: a separate WEST/SOUTH exterior stair with red bands, gray treads and planted islands. Confirms red terraces on west side, not on east gate."
+      },
+      "status": "west stair with red bands is now identified by city photo and 2015 plans; 452medium photo relation to that stair remains unverified"
+    },
+    {
+      "id": "C7",
+      "field": "school west direct stair approach axis",
+      "candidates": {
+        "previous model": "north/south side flights touching 2F deck laterally",
+        "user correction": "front-on along Learning Street axis west to east",
+        "current prototype": "one axial west→east direct stair; other pictured outdoor stairs withdrawn pending independent siting"
+      },
+      "status": "previous model contradicted user observation and withdrawn; front stair horizontal bounds remain unverified"
+    },
+    {
+      "id": "C8",
+      "field": "1F hall seating rake versus inferred 2F slab",
+      "candidates": {
+        "CITY daiho-ru.jpg and SCHOOL description": "1F大ホール、段状固定席500。観客席背面に必要な頭上の空間がある",
+        "current structural placeholder": "GIS roof polygonを2F床に繰り返した結果、仮に500席を配置すると最後列上部が天井から約0.6mになり成立しない"
+      },
+      "status": "clear geometry conflict: hall trial withdrawn. Determine true 2F void/section registration from interior plans before remodelling."
+    }
+  ]
+}
