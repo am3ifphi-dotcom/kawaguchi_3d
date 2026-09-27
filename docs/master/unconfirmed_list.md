@@ -63,7 +63,7 @@ Phase 1 で多くが解消された（詳細は phase1_report.md §6）。
 1. ~~PLATEAU輸送~~ **解決✅**(Blender内parser → JSON 3070棟受領・同定完了)
 2. **プール棟**: LOD1非収録を確認 → ②の軽量版を採用: seamlessphoto **z18 .jpg タイル2枚**（232811,232812/103095）を手動DL→PNG化→mainへ。着弾→ tools/pool_from_tiles.py でオルソ合成・外形確定
 3. 校舎N翼 94.6m について平面図での柱距構成照合（7800系12スパン＋Δの確認・後でOK）
-4. phase2_blockout v2 の再実行（緑ワイヤー300m周辺が出ます）
+4. ~~phase2_blockout v3.1再実行~~ **解決✅**(2026-09-28 ユーザー実行成功・11件全配置・Traceback無し)→ **Phase 2 正式クローズ**
 5. （後回し可）第2校地側 bldg ×4メッシュも parser 通し→JSONをmainへ
 
 ## 2026-09-27 暫定記録 (タイルDL実務メモ)

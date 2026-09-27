@@ -619,19 +619,20 @@ def main():
     if loaded:
         m_p = make_mat("M_plateau_ref", (0.2, 0.85, 0.45), alpha=0.35)
         data = json.load(open(loaded, encoding="utf-8"))
-        made = set()
+        made, kept = 0, 0
         for f in data.get("features", []):
             if f.get("kind") != "bldg": continue
             idkey = f.get("id", "")
             if any(v.get("plt_id") == idkey for v in MASSES["volumes"]): continue
             nm = "plt_" + idkey[:40]
-            if nm in bpy.data.objects: continue
+            if nm in bpy.data.objects:
+                kept += 1; continue
             mesh = extruded_mesh(nm, f["ring"], max(f.get("h", 10.0), 0.1))
             obj = bpy.data.objects.new(nm, mesh)
             col_p.objects.link(obj)
             obj.data.materials.append(m_p); obj.display_type = 'WIRE'
-            made.add(idkey)
-        print(f"  [PLATEAU] 同定済以外のLOD1建物 {len(made)} 棟を緑ワイヤー表示（周辺300mの建物群）")
+            made += 1
+        print(f"  [PLATEAU] 周辺LOD1緑ワイヤー: 新規{made}棟 + 既存{kept}棟（=同定済メイン棟を除く300m圏すべて）")
     else:
         print("  [PLATEAU] plateau_53395597.json が見つからない → ユーザーホーム直下等に置いて再実行")
     if SAVE_AS_BLEND:
