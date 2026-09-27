@@ -1,0 +1,26 @@
+{
+  "name": "kawaguchi-3d",
+  "private": true,
+  "version": "0.3.0-phase3-study",
+  "type": "module",
+  "scripts": {
+    "audit": "node scripts/audit-inputs.mjs && node scripts/audit-exterior.mjs && node scripts/audit-west-connection.mjs && node scripts/audit-roof-equipment.mjs && node scripts/audit-interior.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "@types/stats.js": "^0.17.4",
+    "@types/suncalc": "^1.9.2",
+    "@types/three": "^0.180.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.0"
+  },
+  "dependencies": {
+    "stats.js": "^0.17.0",
+    "suncalc": "^1.9.0",
+    "three": "^0.180.0",
+    "three-mesh-bvh": "^0.9.2"
+  }
+}
