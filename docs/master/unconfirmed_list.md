@@ -61,7 +61,12 @@ Phase 1 で多くが解消された（詳細は phase1_report.md §6）。
 
 ## 2026-09-27 PLATEAU解析後の残課題（更新）
 1. ~~PLATEAU輸送~~ **解決✅**(Blender内parser → JSON 3070棟受領・同定完了)
-2. **プール棟**: LOD1非収録を確認。【どうするか選択】… ② を推奨: (❶現状の仮置きボックスのまま進行 / ❷ GeoTIFF(2021.1撮影 40cm)DLで外形確定 / ❸ seamlessphoto z16手動保存で私が解析)
+2. **プール棟**: LOD1非収録を確認 → ②の軽量版を採用: seamlessphoto **z18 .jpg タイル2枚**（232811,232812/103095）を手動DL→PNG化→mainへ。着弾→ tools/pool_from_tiles.py でオルソ合成・外形確定
 3. 校舎N翼 94.6m について平面図での柱距構成照合（7800系12スパン＋Δの確認・後でOK）
 4. phase2_blockout v2 の再実行（緑ワイヤー300m周辺が出ます）
 5. （後回し可）第2校地側 bldg ×4メッシュも parser 通し→JSONをmainへ
+
+## 2026-09-27 暫定記録 (タイルDL実務メモ)
+- seamlessphotoは **拡張子 .jpg で配信**（.pngは404 NoSuchKey — ユーザーで実測）。std等PNG系とは別様式。
+- 層地域z18 232811/232812・103095 は両方jpg実在(500=bin)。z16/17もjpg実在。
+- 座標→タイル逆算は往復0.000m検証済 (tools/pool_from_tiles.py)。ついでにロンドンz10外部検証も合格。

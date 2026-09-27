@@ -4,8 +4,9 @@ pool_from_tiles.py — 地理院 seamlessphoto タイル(ブラウザ手動DL分
 プール棟エリアの正副近オルソ画像を生成するツール (Phase 2 補助)
 
 使い方:
-  1) ユーザーが seamlessphoto タイル(z18 x=232811,232812 / y=103095 など)を
-     mainにアップロード → エージェントが data/raw/photo_tiles/ に展開
+  1) ユーザーが .jpg でDLした seamlessphoto タイル(z18 232811,232812/103095)を
+     ペイント/スクリプトで PNG 化 → mainにアップロード → エージェントが data/raw/photo_tiles/ に展開
+     ※ seamlessphoto は .jpg 配信 (.png は NoSuchKey)。純pythonデコーダ都合で PNG 運用
   2) python3 tools/pool_from_tiles.py
        → refs/pool_area_ortho.png が生成される (E[-110..10] × N[80..160], 2px/m)
        → PLATEAU外形線(緑)と既存プール仮置き枠(赤)を重ねて幾何QCに使う
