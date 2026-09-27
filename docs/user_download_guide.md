@@ -133,11 +133,42 @@ Phase 3（外装）以降で使います。今はブラウザで眺めるだけ�
 
 ---
 
-## ❺ ダウンロード完了後にやること
+## ❺ Blender での実行手順（絵なし完結版。所要〜20分）
 
-1. Blender（4.x）で新規ファイル → Scripting で
-   `blender/scripts/phase0_project_setup.py` を開いて Run Script（必須。保存されます）
-2. 続けて `blender/scripts/phase1_site_setup.py` を Run Script
+> **目的**: 実座標のプロジェクト土台を作る。**「Run Scriptを押すだけ」**。これが動かないと Phase 2（校舎ブロックアウト）に進めません
+
+### 手順0. Blender本体の準備（未導入なら）
+- https://www.blender.org/download/ から **Blender 4.x（LTS）** のインストーラ（Win用 .msi / Mac用 .dmg）→ インストール → 起動
+- 起動時の「初期設定パネル」は **左クリック** で閉じる（言語は右上タブで日本語化も可）
+
+### 手順1. スクリプトの準備（どちらか）
+- **A. GitHub画面だけでやる（お手軽）**
+  1. リポジトリ → ブランチ **`arena/01a0e022-kawaguchi-3d`** を選択
+  2. `blender/scripts/phase0_project_setup.py` を開いて **「Raw」** ボタン → 全部表示されたら **Ctrl+A → Ctrl+C**
+- **B. ローカルにclone済み** … `blender/scripts/phase0_project_setup.py` をそのまま使う
+
+### 手順2. Blenderで phase0 を実行
+1. Blender起動 → 上部タブ **「Scripting」** を開く
+2. 左の大きな枠（Text Editor）→ **「新規」** → その中をクリックして **Ctrl+V**（貼り付け）
+3. 枠の上にある **「▶ Run Script」** を押す（または **Alt+P**）
+4. 成功すると: 右のOutlinerに `00_Ref_...`、`03_Model_...`、`90_Cameras` など **コレクション群** が現れ、3Dビュー中央に赤いEmpty（原点）と太陽が出ます。**自動で `ホーム/kawaguchi_3d.blend` に保存されます**（Win: `C:\Users\<名前>\kawaguchi_3d.blend`）
+5. **「Layout」タブ** に戻り、3Dビューの中にマウスを置いて **Homeキー**（全体表示）。原点と十字マーカーが見えればOK
+
+### 手順3. phase0 の実行を確認（私に教えてほしい情報）
+- **ファイルタイトルバーが `kawaguchi_3d.blend` になっている** こと
+- 画面キャプチャ（Outlinerと3Dビュー）、または **Console 出力の最後10行**のコピペ
+  - Windows: メニュー **Window → Toggle System Console** で黒窓が出ます（出てなければスキップでOK）
+
+### 手順4. phase1 を実行（引き続き同じ手順で）
+- **もう一度 「新規」** → `blender/scripts/phase1_site_setup.py` を貼り付け → **▶ Run Script**
+- 成功すると: **第1校地・第2校地・第2校地体育館 のポリゴン（実寸の輪郭線）**、原点まわりの **50mグリッド**、基準マーカーが現れます（**これも自動保存**）
+- **Numpad 7**（上面図）にすると「校舎のある場所」が地図っぽく見えます。ここまで来れば **Phase 1 完全通過** です
+
+### つまずいたら
+- **赤いエラーポップ**が出たらそのまま Text Editor の右下か Console の **赤文字行** をコピペして送ってください
+- 「ペーストできない」→ Text Editor の枠内を先にクリック
+- 「Scripting タブがない」→ 画面上部のタブ列の右端「+」→ Scripting を追加
+
 3. 3Dビューで Numpad「7」（上面図）にして、グリッド＋敷地ポリゴンが見えるか確認
 4. **実行ログ（Infoコンソール）か画面キャプチャを共有** → Phase 2（ボリューム）へ進みます
 
