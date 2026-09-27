@@ -590,11 +590,18 @@ def place_box(name, e0, e1, n0, n1, h, mat, col, props):
 
 def main():
     col = ensure_collection(COL_MAIN)
+    known = {v["name"] for v in MASSES["volumes"]}
+    removed = 0
+    for o in list(col.objects):
+        if o.name not in known and not o.name.startswith("plt_"):
+            bpy.data.objects.remove(o, do_unlink=True); removed += 1
+    if removed:
+        print("  [清掃] 旧世代の残存オブジェクト {} 件を削除（v1手動推定ボックス等）".format(removed))
     m_exact = make_mat("M_vol_確定", (0.62, 0.63, 0.65))
     m_pltH  = make_mat("M_vol_PLATEAU高", (0.55, 0.72, 0.92))
     m_tent  = make_mat("M_vol_仮置き", (0.95, 0.8, 0.25), alpha=0.55)
     m_water = make_mat("M_vol_水盤", (0.2, 0.5, 0.9), alpha=0.6)
-    print("\n===== phase2_blockout v3.1 開始 =====")
+    print("\n===== phase2_blockout v3.2 開始 =====")
     nn = 0
     for v in MASSES["volumes"]:
         hs = v.get("h_src", ""); acc = v.get("accuracy", "")
