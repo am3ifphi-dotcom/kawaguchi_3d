@@ -1,0 +1,5 @@
+# ここに Blender からエクスポートした GLB を配置します。
+#   campus.glb        ... 全体（最初はこれ1ファイルでOK）
+#   ext_school.glb    ... 校舎棟 外装（将来の分割案）
+#   int_1f.glb 等     ... 内部各階（遅延ロード用）
+# 生成方法: blender/scripts/export_glb.py

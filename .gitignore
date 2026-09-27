@@ -1,0 +1,23 @@
+# --- 大容量データ・著作権物はGit管理外 ---
+data/raw/
+data/plateau/
+data/fgd/
+data/osm_cache/
+refs/photos/
+refs/city_pdf/
+refs/school_docs/
+refs/magazines/
+*.tiff
+*.tif
+*.geotiff
+
+# --- Blender バックアップ ---
+*.blend1
+*.blend2
+*.blend@
+
+# --- その他 ---
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
