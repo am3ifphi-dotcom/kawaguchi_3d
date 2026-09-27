@@ -62,22 +62,15 @@ def _extent(poly_bl):
 
 
 def mesh2_3_4(lat, lon):
-    """標準地域メッシュ 2次・3次・4次(1km)コード。"""
-
-    def m2(a, o):
-        return int(a * 1.5), int(o - 100)
-
-    p, q = m2(lat, lon)
-    lat_min = (p / 1.5)
-    lon_min = q + 100
-    i = int((lat - lat_min) / (2.0 / 3.0 / 10.0))
-    j = int((lon - lon_min) / 0.125)
-    lat3 = lat_min + i * (2.0 / 3.0 / 10.0)
-    lon3 = lon_min + j * 0.125
-    sub_i = int((lat - lat3) / (2.0 / 3.0 / 20.0))
-    sub_j = int((lon - lon3) / 0.0625)
-    idx = sub_i * 2 + sub_j + 1  # 南西=1, 南東=2, 北西=3, 北東=4
-    return f"{p}{q}", f"{p}{q}{i}{j}", f"{p}{q}{i}{j}{idx}"
+    """標準地域メッシュ 2次(10km)・3次(1km)・4次(500m)コード。JIS X 0410準拠。"""
+    p1 = int(lat * 1.5); q1 = int(lon) - 100
+    r1 = int((lat * 1.5 - p1) * 8); s1 = int((lon - 100 - q1) * 8)
+    m = int(((lat * 1.5 - p1) * 8 - r1) * 10); n = int(((lon - 100 - q1) * 8 - s1) * 10)
+    # 4次: 3次を2x2分割 (南西=1, 南東=2, 北西=3, 北東=4)
+    fi = int((((lat * 1.5 - p1) * 8 - r1) * 10 - m) * 2)
+    fj = int((((lon - 100 - q1) * 8 - s1) * 10 - n) * 2)
+    idx = fi * 2 + fj + 1
+    return f"{p1}{q1}", f"{p1}{q1}{r1}{s1}{m}{n}", f"{p1}{q1}{r1}{s1}{m}{n}{idx}"
 
 
 if __name__ == "__main__":

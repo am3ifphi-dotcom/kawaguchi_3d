@@ -19,7 +19,7 @@
 | D-g | **2027 学校案内パンフレット PDF 本文**（施設詳細・門名称・交通・部活動） | 学校公式サイト直 | 確定 |
 | D-h | 学校公式「施設紹介（校舎棟/アリーナ棟）」各室配置・写真キャプション | HTML | 確定 |
 | D-i | PLATEAU 川口市2024 CKAN メタデータ（全市域bbox・LOD0/1/2・dem/luse/tran/urf・ライセンス条項） | CKAN API | 存在確認済 |
-| D-j | 座標換算＆メッシュ算出：両校地とも **3次メッシュ 533975 内**（4次 5339752） | tools/site_geometry.py | 算出 |
+| D-j | 座標換算＆メッシュ算出：第1=**53395597**（+南53395587）、第2=**53395569/53395579/53395660/53395670** ※旧533975はツール式ミス→正公式で訂正(2026-09-27) | tools/site_geometry.py | 算出 |
 
 ## 3. 特に重要な新確定値（マスターリスト差分の要約、詳細はCSV）
 
@@ -38,7 +38,7 @@
 
 - `tools/site_geometry.py` … 3ポリゴンの保持・IX系/ローカル座標換算・メッシュ番号算出（実行: `python3 tools/site_geometry.py`）
 - `blender/scripts/phase1_site_setup.py` … **実行すると：3敷地ポリゴンを実寸カーブ配置＋50mグリッド＋第2校地マーカ生成**（冪等。要：先に phase0 実行済みblend）
-- スクリプト内に「次のユーザー操作手順（BlenderGIS空中写真 / FGD DEM 533975 / PLATEAU DL / Wayback 図面PDF DL）」を埋め込み済
+- スクリプト内に「次のユーザー操作手順（BlenderGIS空中写真 / 地理院タイル標高PNG（FGD撤廃済） / PLATEAU DL / Wayback 図面PDF DL）」を埋め込み済
 
 ## 5. 施設マスターリスト差分
 
@@ -58,7 +58,7 @@
    - 実施設計別添（各階平面図!!）: `https://web.archive.org/web/20161017163448id_/http://www.city.kawaguchi.lg.jp/kbn/Files/1/72011034/attach/27901siryou.pdf`
    - 補助P02: `https://web.archive.org/web/20170825145501id_/http://www.city.kawaguchi.lg.jp/kbn/Files/1/72011034/attach/P02.pdf`
 2. **PLATEAU**: G空間情報センター `plateau-11203-kawaguchi-shi-2024` → CityGML: bldg/dem/luse/tran (+索引図) → `data/plateau/`
-3. **基盤地図情報**: 数値標高モデル5m・3次メッシュ **533975** → `data/fgd/`
+3. ~~基盤地図情報~~ → **地理院タイル標高PNG**（dem5b z15、登録不要）→ `data/dem_tiles/`
 4. Blenderで `phase0 → phase1` スクリプトを順に実行した結果の **画面キャプチャ or 実行ログ**
 
 ---
