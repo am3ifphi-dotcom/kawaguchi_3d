@@ -594,19 +594,19 @@ def main():
     m_pltH  = make_mat("M_vol_PLATEAU高", (0.55, 0.72, 0.92))
     m_tent  = make_mat("M_vol_仮置き", (0.95, 0.8, 0.25), alpha=0.55)
     m_water = make_mat("M_vol_水盤", (0.2, 0.5, 0.9), alpha=0.6)
-    print("\n===== phase2_blockout v2 開始 =====")
+    print("\n===== phase2_blockout v3.1 開始 =====")
     nn = 0
     for v in MASSES["volumes"]:
         hs = v.get("h_src", ""); acc = v.get("accuracy", "")
         mat = m_water if v.get("type")=="water" else (m_exact if "図面確定" in hs else (m_tent if "仮置き" in acc else m_pltH))
         props = {"label": v.get("label", v["name"]), "h_src": hs, "accuracy": acc,
                  "plt_id": v.get("plt_id", "-")}
-        if v.get("type") == "ring":
+        if v.get("type") in ("ring", "water"):
             place_ring(v["name"], v["ring"], v["h"], mat, col, props)
         else:
             place_box(v["name"], v["E0"], v["E1"], v["N0"], v["N1"], v["h"], mat, col, props)
         nn += 1
-        if v.get("type") == "ring":
+        if v.get("type") in ("ring", "water"):
             xs = [p[0] for p in v["ring"]]; ys = [p[1] for p in v["ring"]]
             w, dd = max(xs) - min(xs), max(ys) - min(ys)
         else:
