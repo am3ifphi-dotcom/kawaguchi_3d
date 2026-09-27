@@ -58,3 +58,10 @@ Phase 1 で多くが解消された（詳細は phase1_report.md §6）。
 - PLATEAU gml は巨大→ **「エージェント提供のparse_plateau_gml.pyをローカル実行→JSON(数百KB)をmainへ」** が受け渡し手段に決定（gml本体をGitHub/web添付から除外）
 
 - 2026-09-27 Phase 2 実行成功✅（10棟配置・保存）。PLATEAU輸送は **bldg gml >25MB でGitHub web弾き確定** → Blender内蔵Pythonで実行する単体解析版 `tools/parse_plateau_gml_blender.py` を提供（最終的には出力JSON数百KBのみをmainで受領）
+
+## 2026-09-27 PLATEAU解析後の残課題（更新）
+1. ~~PLATEAU輸送~~ **解決✅**(Blender内parser → JSON 3070棟受領・同定完了)
+2. **プール棟**: LOD1非収録を確認。【どうするか選択】… ② を推奨: (❶現状の仮置きボックスのまま進行 / ❷ GeoTIFF(2021.1撮影 40cm)DLで外形確定 / ❸ seamlessphoto z16手動保存で私が解析)
+3. 校舎N翼 94.6m について平面図での柱距構成照合（7800系12スパン＋Δの確認・後でOK）
+4. phase2_blockout v2 の再実行（緑ワイヤー300m周辺が出ます）
+5. （後回し可）第2校地側 bldg ×4メッシュも parser 通し→JSONをmainへ
