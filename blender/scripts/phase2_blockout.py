@@ -21,7 +21,7 @@ PLATEAU_JSON_CANDIDATES = [
     os.path.join(os.path.expanduser("~"), "Downloads", "plateau_53395597.json"),
 ]
 MASSES = {
- "version": "2026-09-28 v3 (プール棟=写真実測リング置換・屋外プール新規。主要外形が全て実測ベース)",
+ "version": "2026-09-28 v3 (プール棟=写真実測リング置換・屋外プール新規。主要外形が全て実測ベース) / v3.3 fix",
  "basis": "外形=PLATEAU 11203 LOD1 bldg(53395597)+配置図。高さ=実施設計断面/平面図優先・無ければPLATEAU h",
  "heights_locked": {
   "school軒18.486/高21.886": "BLD-011",
@@ -339,10 +339,10 @@ MASSES = {
      65.08
     ]
    ],
-   "h": 12.754,
+   "h": 12.7565,
    "plt_id": "bldg_0c732e20-c8b1-494c-b725-ad31674dfc8a",
    "plt_h": 13.0,
-   "h_src": "図面確定(BLD-012系列・3x読取13.0も観測)",
+   "h_src": "図面確定(BLD-012系列・3x読取13.0も観測) | ε+2.5mm(arenaMと同寸共存時のz-fight表示対策・±0.3m精度の1/120内)",
    "accuracy": "PLATEAU外形"
   },
   {
@@ -601,7 +601,7 @@ def main():
     m_pltH  = make_mat("M_vol_PLATEAU高", (0.55, 0.72, 0.92))
     m_tent  = make_mat("M_vol_仮置き", (0.95, 0.8, 0.25), alpha=0.55)
     m_water = make_mat("M_vol_水盤", (0.2, 0.5, 0.9), alpha=0.6)
-    print("\n===== phase2_blockout v3.2 開始 =====")
+    print("\n===== phase2_blockout v3.3 開始 =====")
     nn = 0
     for v in MASSES["volumes"]:
         hs = v.get("h_src", ""); acc = v.get("accuracy", "")
