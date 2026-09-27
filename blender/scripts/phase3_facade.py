@@ -36,7 +36,10 @@ ARCADE_IN = 1.8        # 1Fピロティ奥行き
 PARAPET_H = 1.2        # パラペット(写真推定)
 MIN_FACE_M = 30.0      # ファサードを貼る最短辺(端面は除外→v1は長手2面のみ)
 
+# 埋め込み外形 (PLATEAU実測・許容省略で小数0.1m)
+_EMBED_RING = [[107.7, 18.7], [106.7, 38.4], [99.7, 38.1], [6.2, 33.6], [-2.9, 33.1], [-2.6, 27.8], [-2.0, 27.8], [-1.9, 25.1], [-2.8, 25.1], [-2.2, 13.6], [49.4, 16.0], [49.1, 22.1], [56.0, 22.4], [56.3, 16.3], [107.7, 18.7]]
 def load_school_ring():
+    # ローカルに phase2_masses.json があれば最新値で上書き、無ければ埋め込み値
     try:
         M = json.load(open(os.path.join(os.path.expanduser("~"), "kawaguchi_3d", "docs", "phase2", "phase2_masses.json"), encoding="utf-8"))
         for v in M["volumes"]:
@@ -44,7 +47,7 @@ def load_school_ring():
                 return v["ring"]
     except Exception:
         pass
-    return None
+    return _EMBED_RING
 
 # ---------- 幾何Spec (bpy非依存・サンドボックス検証単位) ----------
 def edges_long(ring):
@@ -135,9 +138,6 @@ def add_box_mesh(name, dims_xyz):
 
 def main():
     ring = load_school_ring()
-    if not ring:
-        print("  [エラー] phase2_masses.json が C:\\Users\\＊\\kawaguchi_3d\\docs\\phase2\\ に見つからない")
-        return
     spec = build_spec(ring)
     col = bpy.data.collections.get(COL)
     if col is None:
