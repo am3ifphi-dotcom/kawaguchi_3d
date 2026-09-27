@@ -74,6 +74,7 @@
 
 
 # ▣ 実行確認ログ
+- 2026-09-27 Phase 2 blockout 実行成功（ユーザー・10棟配置/保存/色分け=設計どおり）。PLATEAU直接共有は容量で不可→Blender内実行解析版に切替
 - 2026-09-27 Phase 2 仕込み(エージェント自律): 断面寸法の3x再読でBLD-012/013確定、配置図アフィン校正(残差1.24m)確立、主要棟マス10個を`docs/phase2/phase2_masses.json`に確立(確度タグ別)、PLATEAU解析ツール/`blender/scripts/phase2_blockout.py`作成(構文OK)
 - 2026-09-27 Phase 1 スクリプト実行成功（ユーザー・本番ログ受領）: 3ポリゴン生成+50mグリッド+第2校地参照点。両ゲート通過。**phase1スクリプト末尾の旧案内は同ターンに最新版へ刷新済**
 - 2026-09-27 Phase 0 スクリプト実行成功（ユーザー・本番ログ受領）: 22コレクション/原点/自動保存=`C:\Users\cheer\kawaguchi_3d.blend`。addon(blgis/sun_pos/measureit)未導入は想定内（現方針では必須でない）。DeprecationWarning(use_nodes)=無害

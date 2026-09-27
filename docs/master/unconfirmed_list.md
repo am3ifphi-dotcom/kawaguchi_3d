@@ -56,3 +56,5 @@ Phase 1 で多くが解消された（詳細は phase1_report.md §6）。
 - S・N翼は**同高の教室翼×2**（4F平面で両翼とも教室列=解釈確定）。旧来"N棟3層12.75"はアリーナN棟の系列（12,754）への**誤帰属**と整理
 - 翼は**東西2列×中央テラス/吹抜で2分割の4筏構成**（配置図ダーク帯が53.3m×2で検出 = 109.2/2と整合）
 - PLATEAU gml は巨大→ **「エージェント提供のparse_plateau_gml.pyをローカル実行→JSON(数百KB)をmainへ」** が受け渡し手段に決定（gml本体をGitHub/web添付から除外）
+
+- 2026-09-27 Phase 2 実行成功✅（10棟配置・保存）。PLATEAU輸送は **bldg gml >25MB でGitHub web弾き確定** → Blender内蔵Pythonで実行する単体解析版 `tools/parse_plateau_gml_blender.py` を提供（最終的には出力JSON数百KBのみをmainで受領）
